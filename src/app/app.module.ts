@@ -18,7 +18,7 @@ import { PedidoselecionarprodutoComponent } from './components/pedido/pedidosele
     IndexComponent,
     HeaderComponent,
     FooterComponent,
-    LoginComponent
+    LoginComponent,
     FooterComponent,
     PedidocriarComponent,
     PedidoselecionarpizzaComponent,
