@@ -1,1 +1,18 @@
-<p>index works!</p>
+<input type="button" class="btn btn-success" value="Abrir Modal" (click)="abrir(modal1)"/>
+
+
+
+<ng-template #modal1 let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">Modal title</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+       
+        <app-pedidocriar></app-pedidocriar>
+        
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+    </div>
+</ng-template>
