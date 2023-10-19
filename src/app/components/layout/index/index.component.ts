@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-index',
@@ -6,5 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./index.component.scss']
 })
 export class IndexComponent {
+
+  modalService = inject(NgbModal);
+
+  abrir(modal: any)
+  { 
+    this.modalService.open(modal, { size: 'md' });
+  }
 
 }

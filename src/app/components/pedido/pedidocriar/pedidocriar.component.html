@@ -1,0 +1,48 @@
+<h1>Seu Pedido</h1>
+<div>
+    <input type="button" class="btn btn-success" (click)="abrirModalPizza(modal1)" value="Montar Pizza"/>
+    <input type="button" class="btn btn-success" (click)="abrirModalProduto(modal2)" value="Adicionar Produto"/>
+</div>
+
+<div>
+    <input type="button" class="btn btn-danger" value="Cancelar"/>
+    <div>
+        <p>Valor total: R${{valorTotal}}</p>
+        <input type="button" class="btn btn-primary" value="Finalizar"/>
+    </div>
+</div>
+
+
+<!-- Modal para Montar Pizza -->
+<ng-template #modal1 let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">Modal title</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+       
+        <app-pedidoselecionarpizza></app-pedidoselecionarpizza>
+        
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+    </div>
+</ng-template>
+
+
+
+<!-- Modal para Adicionar Produtos -->
+<ng-template #modal2 let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">Modal title</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+       
+        <app-pedidoselecionarproduto></app-pedidoselecionarproduto>
+        
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+    </div>
+</ng-template>
