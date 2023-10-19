@@ -5,22 +5,29 @@
 <div class="container">
     <div class="d-flex justify-content-around">
         <div class="row text-center mt-5">
-            <a [routerLink]="['/selecionaPizza']" class="btn btn-primary custom-btn d-flex row align-items-center">
-                <h3>Pizzas</h3>
-                <img src="../../../../../assets/imgMenuPizza.png" alt="Minha Imagem" height="150"> 
-            </a>
+           
+            <input type="button" class="btn btn-primary custom-btn d-flex row align-items-center" value="Fazer Pedido" (click)="abrir(modal1)"/>
+
         </div>
-        <div class="row text-center mt-5">
-            <button class="btn btn-primary custom-btn d-flex row align-items-center">
-                <h3 >Bebidas</h3>
-                <img src="../../../../../assets/imgMenuBebida.png" alt="Minha Imagem" height="150"  > 
-            </button>
-        </div>
-        <div class="row text-center mt-5">
-            <a [routerLink]="['/selecionarProduto']" class="btn btn-primary custom-btn d-flex row align-items-center">
-                <h3 >Outros Produtos</h3>
-                <img src="../../../../../assets/imgMenuOutros.png" alt="Minha Imagem"  height="150"> 
-            </a>
-        </div>
+       
     </div>
 </div>
+
+
+
+
+
+<ng-template #modal1 let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">Modal title</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+       
+        <app-pedidocriar></app-pedidocriar>
+        
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+    </div>
+</ng-template>

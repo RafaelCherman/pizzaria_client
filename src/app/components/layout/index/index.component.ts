@@ -8,11 +8,6 @@ import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 })
 export class IndexComponent {
 
-  modalService = inject(NgbModal);
-
-  abrir(modal: any)
-  { 
-    this.modalService.open(modal, { size: 'md' });
-  }
+  
 
 }

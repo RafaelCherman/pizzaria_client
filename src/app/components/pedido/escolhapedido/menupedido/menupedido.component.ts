@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-menupedido',
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class MenupedidoComponent {
 
+  modalService = inject(NgbModal);
+
+  abrir(modal: any)
+  { 
+    this.modalService.open(modal, { size: 'md' });
+  }
+
 }
+
