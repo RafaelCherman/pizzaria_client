@@ -11,6 +11,7 @@ import { LoginComponent } from './components/sistemas/login/login.component';
 import { PedidocriarComponent } from './components/pedido/pedidocriar/pedidocriar.component';
 import { PedidoselecionarpizzaComponent } from './components/pedido/pedidoselecionarpizza/pedidoselecionarpizza.component';
 import { PedidoselecionarprodutoComponent } from './components/pedido/pedidoselecionarproduto/pedidoselecionarproduto.component';
+import { MenupedidoComponent } from './components/pedido/escolhapedido/menupedido/menupedido.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { PedidoselecionarprodutoComponent } from './components/pedido/pedidosele
     FooterComponent,
     PedidocriarComponent,
     PedidoselecionarpizzaComponent,
-    PedidoselecionarprodutoComponent
+    PedidoselecionarprodutoComponent,
+    MenupedidoComponent
   ],
   imports: [
     BrowserModule,
