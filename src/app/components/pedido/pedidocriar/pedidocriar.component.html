@@ -8,7 +8,7 @@
     <input type="button" class="btn btn-danger" value="Cancelar"/>
     <div>
         <p>Valor total: R${{valorTotal}}</p>
-        <input type="button" class="btn btn-primary" value="Finalizar"/>
+        <input (click)="finalizaPedido()" type="button" class="btn btn-primary" value="Finalizar"/>
     </div>
 </div>
 
@@ -21,7 +21,7 @@
     </div>
     <div class="modal-body">
        
-        <app-pedidoselecionarpizza></app-pedidoselecionarpizza>
+        <app-pedidoselecionarpizza (retorno)="addPizza($event)"></app-pedidoselecionarpizza>
         
     </div>
     <div class="modal-footer">
@@ -39,7 +39,7 @@
     </div>
     <div class="modal-body">
        
-        <app-pedidoselecionarproduto></app-pedidoselecionarproduto>
+        <app-pedidoselecionarproduto (retorno)="addProduto($event)" ></app-pedidoselecionarproduto>
         
     </div>
     <div class="modal-footer">
