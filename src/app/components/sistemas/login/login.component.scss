@@ -1,0 +1,52 @@
+
+
+
+body{
+    background-color: #3d87f6;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #ffffff;
+
+}
+
+
+#login-row #form-login{
+    width: 60vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container{
+    width: 50vw;
+}
+
+.element-photoroom{
+    width: 15vw;
+}
+
+h1{
+    top: 0;
+    left: 0;
+    font-family: "Kaushan Script-Regular", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 7vw;
+}
+
+.btn-custom {
+    color: black;
+    width: 8vw;
+    top: 0;
+    left: 0;
+    background-color: #fafcff;
+    border-radius: 12px;
+}
+
+.btn-success{
+    width: 8vw;
+    border-radius: 12px;
+}
