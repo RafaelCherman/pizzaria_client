@@ -3,6 +3,7 @@ import { Produtodiverso } from "./produtodiverso";
 
 export class Pedido {
 
+    id!: number;
     //cliente
     //atendente
     //endereco

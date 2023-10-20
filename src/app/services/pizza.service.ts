@@ -8,7 +8,7 @@ import { Pizza } from '../models/pizza';
 })
 export class PizzaService {
 
-  API: string = 'http://localhost:8080/api/pizzas';
+  API: string = 'http://localhost:8080/api/pizza';
   http = inject(HttpClient);
 
   constructor() { }
@@ -25,6 +25,8 @@ export class PizzaService {
   }
 
   save(pizza: Pizza): Observable<string> {
+    let valor: number = this.calculaValorPizza(pizza);
+    pizza.valorPizza = valor;
     return this.http.post<string>(this.API, pizza);
   }
 
@@ -40,5 +42,19 @@ export class PizzaService {
       .set('id', id)
     
     return this.http.delete<any>(this.API, {params: params});
+  }
+
+
+
+  calculaValorPizza(pizza: Pizza): number{
+    let total: number = 0;
+    total += pizza.tipo.valor;
+
+    for(let item of pizza.sabor)
+    {
+      total += item.valor;
+    }
+
+    return total;
   }
 }
