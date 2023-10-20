@@ -1,15 +1,15 @@
 .custom-btn{
     height: 60vh;
     width: 20vw;
-    background-color: #fafcff;
+    background-color: #ffffff;
     border-radius: 15px;
     overflow: hidden;
     color: black;
+    box-shadow: 4px 4px 5px 4px rgba(0, 0, 0, 0.5);
 }
 
 .custom-btn:hover{   
-    background-color: #0667f9;
-    color: #fafcff;
+    background-color: #a3a1a1;
 }
 
 h3{
