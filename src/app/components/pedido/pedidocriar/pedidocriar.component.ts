@@ -39,10 +39,13 @@ export class PedidocriarComponent {
     this.modalRef.dismiss();
   }
 
-  addProduto(produto: Produtodiverso)
+  addProduto(produtos: Produtodiverso[])
   {
-    this.produtoList.push(produto);
-    this.valorTotal += produto.preco;
+    for(let i of produtos)
+    {
+      this.produtoList.push(i);
+      this.valorTotal += i.preco;
+    }
     this.modalRef.dismiss();
   }
 
@@ -53,5 +56,9 @@ export class PedidocriarComponent {
     console.log(this.pizzaList);
     console.log(this.produtoList);
     console.log(this.pedido);
+    if(this.pedido)
+    {
+      alert("latudo");
+    }
   }
 }

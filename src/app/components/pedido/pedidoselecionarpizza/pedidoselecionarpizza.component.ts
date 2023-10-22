@@ -33,7 +33,6 @@ export class PedidoselecionarpizzaComponent {
 
 
   //PARA TESTES
-  sabores: Sabor[] = [];
   tipos: Pizzatipo[] = [];
   saborService = inject(SaborService);
   pizzaTipoService = inject(PizzatipoService);
@@ -117,7 +116,6 @@ export class PedidoselecionarpizzaComponent {
     }
     else if (!event.target.checked) {
 
-      let index: number;
       obj.selected = false;
       this.quantidade -= 1;
       this.valorPizza -= obj.sabor.valor;
@@ -126,8 +124,7 @@ export class PedidoselecionarpizzaComponent {
       {
         if(obj.sabor.id == this.saboresSelecionados[i].id)
         {
-          index = i;
-          this.saboresSelecionados.splice(index, 1);
+          this.saboresSelecionados.splice(i, 1);
           break;
         }
       }

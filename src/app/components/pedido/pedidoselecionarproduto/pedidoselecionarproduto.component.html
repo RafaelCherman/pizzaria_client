@@ -10,12 +10,14 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let produto of produtos">
-            <td>{{produto.nome}}</td>
-            <td>{{produto.tipo}}</td>
-            <td>{{produto.preco}}</td>
-            <td>
-                <input class="" type="number"/>
+        <tr *ngFor="let obj of produtosQnt">
+            <td>{{obj.produto.nome}}</td>
+            <td>{{obj.produto.tipo}}</td>
+            <td>R$ {{obj.produto.preco}}</td>
+            <td class="d-flex justify-content-center align-items-center">
+                <input class="" type="button" value="-" (click)="removerProduto(obj)"/>
+                <p class="p-margin">{{obj.quantidade}}</p>
+                <input class="" type="button" value="+" (click)="adicionarProduto(obj)"/>
             </td>
         </tr>
     </tbody>
