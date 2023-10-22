@@ -39,6 +39,19 @@ export class PedidocriarComponent {
     this.modalRef.dismiss();
   }
 
+  removePizza(pizza: Pizza)
+  {
+    this.valorTotal -= pizza.valorPizza;
+    for(let i=0; i < this.pizzaList.length; i++)
+    {
+        if(pizza.id == this.pizzaList[i].id)
+        {
+          this.pizzaList.splice(i, 1);
+          break;
+        }
+    }
+  }
+
   addProduto(produtos: Produtodiverso[])
   {
     for(let i of produtos)
@@ -49,16 +62,29 @@ export class PedidocriarComponent {
     this.modalRef.dismiss();
   }
 
+  removeProduto(produto: Produtodiverso)
+  {
+    this.valorTotal -= produto.preco;
+    for(let i=0; i < this.produtoList.length; i++)
+    {
+        if(produto.id == this.produtoList[i].id)
+        {
+          this.produtoList.splice(i, 1);
+          break;
+        }
+    }
+  }
+
   finalizaPedido()
   {
-    this.pedido.pizzas = this.pizzaList;
-    this.pedido.produtos = this.produtoList;
-    console.log(this.pizzaList);
-    console.log(this.produtoList);
-    console.log(this.pedido);
-    if(this.pedido)
+    
+    if(this.pedido.pizzas.length > 0 || this.pedido.produtos.length > 0)
     {
-      alert("latudo");
+      this.pedido.pizzas = this.pizzaList;
+      this.pedido.produtos = this.produtoList;
+      console.log(this.pizzaList);
+      console.log(this.produtoList);
+      console.log(this.pedido);  
     }
   }
 }

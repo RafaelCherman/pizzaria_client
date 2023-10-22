@@ -3,7 +3,47 @@
     <input type="button" class="btn btn-success" (click)="abrirModalPizza(modal1)" value="Montar Pizza"/>
     <input type="button" class="btn btn-success" (click)="abrirModalProduto(modal2)" value="Adicionar Produto"/>
 </div>
-
+<div *ngIf="pizzaList.length > 0">
+    <table class="table" *ngFor="let pizza of pizzaList">      
+        <thead>
+            <h4>Pizza {{pizza.tipo.nome}} R$ {{pizza.valorPizza}}</h4>
+            <input type="button" (click)="removePizza(pizza)" /> 
+            <tr>
+                <th>Sabores</th>
+                <th>Tamanho</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <a *ngFor="let sabor of pizza.sabor">{{sabor.nome}} </a>
+                </td>
+                <td>{{pizza.tipo.tamanho}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div *ngIf="produtoList.length > 0">
+    <table class="table">      
+        <thead>
+            <h4>Produtos</h4>
+            <tr>
+                <th>Nome</th>
+                <th>Valor</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let produto of produtoList">
+                <td>{{produto.nome}}</td>
+                <td>R$ {{produto.preco}}</td>
+                <td>
+                    <input type="button" (click)="removeProduto(produto)" />
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 <div>
     <input type="button" class="btn btn-danger" value="Cancelar"/>
     <div>
