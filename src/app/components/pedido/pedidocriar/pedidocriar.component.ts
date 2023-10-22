@@ -24,11 +24,7 @@ export class PedidocriarComponent {
 
   constructor(){}
 
-  abrirModalPizza(modal: any){
-    this.modalRef = this.modalService.open(modal, { size: 'lg' });
-  }
-
-  abrirModalProduto(modal: any){
+  abrirModal(modal: any){
     this.modalRef = this.modalService.open(modal, { size: 'lg' });
   }
 
@@ -75,16 +71,20 @@ export class PedidocriarComponent {
     }
   }
 
-  finalizaPedido()
+  finalizaPedido(modal: any)
   {
     
-    if(this.pedido.pizzas.length > 0 || this.pedido.produtos.length > 0)
+    if(this.pizzaList.length > 0 || this.produtoList.length > 0)
     {
       this.pedido.pizzas = this.pizzaList;
       this.pedido.produtos = this.produtoList;
+      this.pedido.valorTotal = this.valorTotal;
+      this.abrirModal(modal);
       console.log(this.pizzaList);
       console.log(this.produtoList);
       console.log(this.pedido);  
     }
   }
+
+
 }

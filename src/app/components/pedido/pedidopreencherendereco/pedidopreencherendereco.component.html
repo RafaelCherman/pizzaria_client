@@ -1,1 +1,26 @@
-<p>pedidopreencherendereco works!</p>
+
+<div class="form-group">
+    <label for="telResidencia">Telefone da Residencia</label>
+    <input type="text" class="form-control" id="telResidencia" [(ngModel)]="endereco.telResidencia">
+</div>
+<div class="form-group">
+    <label for="rua">Rua</label>
+    <input type="text" class="form-control" id="rua" [(ngModel)]="endereco.rua">
+</div>
+<div class="form-group">
+    <label for="nuEndereco">Número</label>
+    <input type="number" class="form-control" id="nuEndereco" [(ngModel)]="endereco.nuEndereco">
+</div>
+<div class="form-group">
+    <label for="bairro">Bairro</label>
+    <input type="text" class="form-control" id="bairro" [(ngModel)]="endereco.bairro">
+</div>
+<div class="form-group">
+    <label for="cep">Cep</label>
+    <input type="text" class="form-control" id="cep" [(ngModel)]="endereco.cep">
+</div>
+<div class="form-group">
+    <label for="complemento">Complemento</label>
+    <input type="text" class="form-control" id="complemento" [(ngModel)]="endereco.complemento">
+</div>
+<input class="btn btn-success" type="button" (click)="finalizar()" value="Finalizar"/>
