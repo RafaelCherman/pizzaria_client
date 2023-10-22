@@ -15,5 +15,10 @@ export class MenupedidoComponent {
     this.modalService.open(modal, { size: 'lg' });
   }
 
+  fechar(retorno: any)
+  {
+    this.modalService.dismissAll();
+  }
+
 }
 

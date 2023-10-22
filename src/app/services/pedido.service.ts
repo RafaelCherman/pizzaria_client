@@ -26,6 +26,12 @@ export class PedidoService {
     return this.http.get<Pedido[]>(this.API + "/all");
   }
 
+  listBySituacao(s: string): Observable<Pedido[]> {
+    let params = new HttpParams()
+      .set('s', s)
+    return this.http.get<Pedido[]>(this.API + "/situacao", {params: params});
+  }
+
   save(pedido: Pedido): Observable<Pedido> {
     return this.http.post<Pedido>(this.API, pedido);
   }

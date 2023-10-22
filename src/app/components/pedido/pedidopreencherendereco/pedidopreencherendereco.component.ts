@@ -22,7 +22,11 @@ export class PedidopreencherenderecoComponent {
   @Input() pedido: Pedido = new Pedido();
 
   cliente: Cliente = new Cliente();
+  enderecos: Endereco[] = [];
   endereco: Endereco = new Endereco();
+
+  selecionado: boolean = false;
+  opcao: boolean = false;
 
   constructor()
   {
@@ -33,25 +37,10 @@ export class PedidopreencherenderecoComponent {
   {
     this.clienteService.findById(1).subscribe({
       next: cliente =>{
-        this.endereco.cliente = cliente;
-      },
-      error: erro =>{
-        alert('Exemplo de tratamento de erro/exception! Observe o erro no console!');
-        console.error(erro);
-      }
-    })
-  }
-
-  finalizar()
-  {
-    this.enderecoService.save(this.endereco).subscribe({
-      next: endereco =>{
-        this.pedido.endereco = endereco;
-        this.pedido.situacaoPedido = "A confirmar";
-        this.pedido.solicitaEntrega = true;
-        this.pedidoService.save(this.pedido).subscribe({
-          next: pedido =>{
-            this.retorno.emit(pedido);
+        this.cliente = cliente;
+        this.enderecoService.listByCliente(cliente.id).subscribe({
+          next: lista =>{
+            this.enderecos = lista;
           },
           error: erro =>{
             alert('Exemplo de tratamento de erro/exception! Observe o erro no console!');
@@ -64,5 +53,68 @@ export class PedidopreencherenderecoComponent {
         console.error(erro);
       }
     })
+  }
+
+  finalizar()
+  {
+    this.pedido.situacaoPedido = "A confirmar";
+
+    if(this.selecionado)
+    {
+      this.pedido.endereco = this.endereco;
+      this.pedidoService.save(this.pedido).subscribe({
+        next: pedido =>{
+          this.retorno.emit(pedido);
+        },
+        error: erro =>{
+          alert('Exemplo de tratamento de erro/exception! Observe o erro no console!');
+          console.error(erro);
+        }
+      });
+    }
+    else if(!this.selecionado){
+      this.endereco.cliente = this.cliente;
+      this.enderecoService.save(this.endereco).subscribe({
+        next: endereco =>{
+          this.pedido.endereco = endereco;
+          
+          this.pedido.solicitaEntrega = true;
+          this.pedidoService.save(this.pedido).subscribe({
+            next: pedido =>{
+              this.retorno.emit(pedido);
+            },
+            error: erro =>{
+              alert('Exemplo de tratamento de erro/exception! Observe o erro no console!');
+              console.error(erro);
+            }
+          });
+        },
+        error: erro =>{
+          alert('Exemplo de tratamento de erro/exception! Observe o erro no console!');
+          console.error(erro);
+        }
+      })
+    }
+  }
+
+  escolher(escolha: boolean)
+  {
+    this.selecionado = escolha;
+    this.opcao = escolha;
+    if(!escolha)
+    {
+      this.endereco = new Endereco();
+    }
+  }
+
+  selecionar(endereco: Endereco)
+  {
+    this.endereco = endereco;
+    this.opcao = false;
+  }
+
+  voltar()
+  {
+    this.retorno.emit();
   }
 }

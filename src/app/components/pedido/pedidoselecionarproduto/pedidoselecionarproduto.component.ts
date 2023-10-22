@@ -73,6 +73,11 @@ export class PedidoselecionarprodutoComponent {
       }
     }
   }
+  
+  cancelar()
+  {
+    this.retorno.emit();
+  }
 
 
 

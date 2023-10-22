@@ -1,13 +1,16 @@
-<h1>Seu Pedido</h1>
-<div>
-    <input type="button" class="btn btn-success" (click)="abrirModal(modal1)" value="Montar Pizza"/>
-    <input type="button" class="btn btn-success" (click)="abrirModal(modal2)" value="Adicionar Produto"/>
+<div class="row">
+    <input type="button" class="offset-2 col-3 btn btn-success" (click)="abrirModal(modal1)" value="Montar Pizza"/>
+    <input type="button" class="offset-2 col-3 btn btn-success" (click)="abrirModal(modal2)" value="Adicionar Produto"/>
 </div>
 <div *ngIf="pizzaList.length > 0">
-    <table class="table" *ngFor="let pizza of pizzaList">      
+    <table class="table table-sm" *ngFor="let pizza of pizzaList">      
         <thead>
-            <h4>Pizza {{pizza.tipo.nome}} R$ {{pizza.valorPizza}}</h4>
-            <input type="button" (click)="removePizza(pizza)" /> 
+            <div class="d-flex justify-content-between">
+                <h4>Pizza {{pizza.tipo.nome}} R$ {{pizza.valorPizza}}</h4>
+                <div>
+                    <input type="button" class="btn btn-danger" value="Remover" (click)="removePizza(pizza)" /> 
+                </div>
+            </div>
             <tr>
                 <th>Sabores</th>
                 <th>Tamanho</th>
@@ -38,17 +41,19 @@
                 <td>{{produto.nome}}</td>
                 <td>R$ {{produto.preco}}</td>
                 <td>
-                    <input type="button" (click)="removeProduto(produto)" />
+                    <input type="button" class="btn btn-danger" value="Remover" (click)="removeProduto(produto)" />
                 </td>
             </tr>
         </tbody>
     </table>
 </div>
-<div>
-    <input type="button" class="btn btn-danger" value="Cancelar"/>
-    <div>
-        <p>Valor total: R${{valorTotal}}</p>
-        <input (click)="finalizaPedido(modal3)" type="button" class="btn btn-primary" value="Finalizar"/>
+<div class="row d-flex align-items-end">
+    <div class="offset-3 col-3">
+        <input type="button" class="btn btn-danger" value="Cancelar" (click)="cancelar()" />
+    </div>
+    <div class="col-3 d-flex flex-column align-items-center">
+        <a>Valor total: R${{valorTotal}}</a>
+        <input (click)="finalizaPedido(modal3)" type="button" class="btn btn-primary" value="Proximo"/>
     </div>
 </div>
 
@@ -56,16 +61,12 @@
 <!-- Modal para Montar Pizza -->
 <ng-template #modal1 let-modal>
     <div class="modal-header">
-        <h4 class="modal-title">Modal title</h4>
-        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+        <h4 class="modal-title">Monte sua Pizza</h4>
     </div>
     <div class="modal-body">
        
         <app-pedidoselecionarpizza (retorno)="addPizza($event)"></app-pedidoselecionarpizza>
         
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
     </div>
 </ng-template>
 
@@ -74,16 +75,12 @@
 <!-- Modal para Adicionar Produtos -->
 <ng-template #modal2 let-modal>
     <div class="modal-header">
-        <h4 class="modal-title">Modal title</h4>
-        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+        <h4 class="modal-title">Escolha os Produtos</h4>
     </div>
     <div class="modal-body">
        
         <app-pedidoselecionarproduto (retorno)="addProduto($event)" ></app-pedidoselecionarproduto>
         
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
     </div>
 </ng-template>
 
@@ -91,15 +88,11 @@
 
 <ng-template #modal3 let-modal>
     <div class="modal-header">
-        <h4 class="modal-title">Modal title</h4>
-        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+        <h4 class="modal-title">Preencha o Endereço</h4>
     </div>
     <div class="modal-body">
        
-        <app-pedidopreencherendereco [pedido]="pedido"></app-pedidopreencherendereco>
+        <app-pedidopreencherendereco (retorno)="voltar($event)" [pedido]="pedido"></app-pedidopreencherendereco>
         
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
     </div>
 </ng-template>

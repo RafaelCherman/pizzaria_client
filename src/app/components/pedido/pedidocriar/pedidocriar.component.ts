@@ -1,8 +1,9 @@
-import { Component, inject } from '@angular/core';
+import { Component, EventEmitter, Output, inject } from '@angular/core';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { Pedido } from 'src/app/models/pedido';
 import { Pizza } from 'src/app/models/pizza';
 import { Produtodiverso } from 'src/app/models/produtodiverso';
+import { PizzaService } from 'src/app/services/pizza.service';
 
 @Component({
   selector: 'app-pedidocriar',
@@ -11,12 +12,14 @@ import { Produtodiverso } from 'src/app/models/produtodiverso';
 })
 export class PedidocriarComponent {
 
+  pizzaService = inject(PizzaService);
   produtoList: Produtodiverso[] = [];
   pizzaList: Pizza[] = [];
   pedido: Pedido = new Pedido();
 
   valorTotal: number = 0;
 
+  @Output() retorno = new EventEmitter<any>();
   modalService = inject(NgbModal);
   modalRef!: NgbModalRef;
 
@@ -30,8 +33,11 @@ export class PedidocriarComponent {
 
   addPizza(pizza: Pizza)
   {
-    this.pizzaList.push(pizza);
-    this.valorTotal += pizza.valorPizza;
+    if(pizza)
+    {
+      this.pizzaList.push(pizza);
+      this.valorTotal += pizza.valorPizza;
+    }
     this.modalRef.dismiss();
   }
 
@@ -50,10 +56,13 @@ export class PedidocriarComponent {
 
   addProduto(produtos: Produtodiverso[])
   {
-    for(let i of produtos)
+    if(produtos)
     {
-      this.produtoList.push(i);
-      this.valorTotal += i.preco;
+      for(let i of produtos)
+      {
+        this.produtoList.push(i);
+        this.valorTotal += i.preco;
+      }
     }
     this.modalRef.dismiss();
   }
@@ -84,6 +93,38 @@ export class PedidocriarComponent {
       console.log(this.produtoList);
       console.log(this.pedido);  
     }
+  }
+
+  voltar(pedido: Pedido)
+  {
+    if(pedido)
+    {
+      this.modalService.dismissAll();
+    }
+    else
+    {
+      this.modalRef.dismiss();
+    }
+  }
+
+  cancelar()
+  {
+    if(this.pizzaList.length > 0)
+    {
+      for(let i of this.pizzaList)
+      {
+        this.pizzaService.delete(i.id).subscribe({
+          next: resposta =>{
+            console.log(resposta.mensagem);
+          },
+          error: erro =>{
+            alert("Erro. Consulte o console");
+            console.log(erro);
+          }
+        })
+      }
+    }
+    this.retorno.emit();
   }
 
 

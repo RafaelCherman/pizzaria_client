@@ -1,26 +1,72 @@
 
-<div class="form-group">
-    <label for="telResidencia">Telefone da Residencia</label>
-    <input type="text" class="form-control" id="telResidencia" [(ngModel)]="endereco.telResidencia">
+<div class="row d-flex align-items-end">
+    <div class="offset-3 col-3">
+        <p class="p-b" [ngClass]="{'selecionado' : (!selecionado)}" (click)="escolher(false)">Cadastrar</p>
+    </div>
+    <div class="col-3"> 
+        <p class="p-b" [ngClass]="{'selecionado' : (selecionado)}" (click)="escolher(true)">Escolher</p>
+    </div>
 </div>
-<div class="form-group">
-    <label for="rua">Rua</label>
-    <input type="text" class="form-control" id="rua" [(ngModel)]="endereco.rua">
+
+<div *ngIf="opcao">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Número</th>
+                <th>Rua</th>
+                <th>Bairro</th>
+                <th>Telefone</th>
+                <th>
+                    <input (click)="escolher(false)" class="btn btn-success" type="button" value="Cadastrar"/>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let endereco of enderecos">
+                <td>{{endereco.nuEndereco}}</td>
+                <td>{{endereco.rua}}</td>
+                <td>{{endereco.bairro}}</td>
+                <td>{{endereco.telResidencia}}</td>
+                <td>
+                    <input (click)="selecionar(endereco)" class="btn btn-success" type="button" value="Selecionar"/>
+                </td>
+            </tr>
+        </tbody>
+    </table>    
 </div>
-<div class="form-group">
-    <label for="nuEndereco">Número</label>
-    <input type="number" class="form-control" id="nuEndereco" [(ngModel)]="endereco.nuEndereco">
+
+<div *ngIf="!opcao" class="row d-flex justify-content-center">
+    <div class="col-5 form-group">
+        <label for="telResidencia">Telefone da Residencia</label>
+        <input [disabled]="selecionado" type="text" class="form-control" id="telResidencia" [(ngModel)]="endereco.telResidencia">
+    </div>
+    <div class="col-5 form-group">
+        <label for="rua">Rua</label>
+        <input [disabled]="selecionado" type="text" class="form-control" id="rua" [(ngModel)]="endereco.rua">
+    </div>
+    <div class="col-5 form-group">
+        <label for="nuEndereco">Número</label>
+        <input [disabled]="selecionado" type="number" class="form-control" id="nuEndereco" [(ngModel)]="endereco.nuEndereco">
+    </div>
+    <div class="col-5 form-group">
+        <label for="bairro">Bairro</label>
+        <input [disabled]="selecionado" type="text" class="form-control" id="bairro" [(ngModel)]="endereco.bairro">
+    </div>
+    <div class="col-5 form-group">
+        <label for="cep">Cep</label>
+        <input [disabled]="selecionado" type="text" class="form-control" id="cep" [(ngModel)]="endereco.cep">
+    </div>
+    <div class="col-5 form-group">
+        <label for="complemento">Complemento</label>
+        <input [disabled]="selecionado" type="text" class="form-control" id="complemento" [(ngModel)]="endereco.complemento">
+    </div>
 </div>
-<div class="form-group">
-    <label for="bairro">Bairro</label>
-    <input type="text" class="form-control" id="bairro" [(ngModel)]="endereco.bairro">
+
+<div class="row d-flex align-items-end">
+    <div class="offset-3 col-3">
+        <input type="button" class="btn btn-danger" value="Voltar" (click)="voltar()" />
+    </div>
+    <div class="col-3"> 
+        <input (click)="finalizar()" type="button" class="btn btn-primary" value="Finalizar"/>
+    </div>
 </div>
-<div class="form-group">
-    <label for="cep">Cep</label>
-    <input type="text" class="form-control" id="cep" [(ngModel)]="endereco.cep">
-</div>
-<div class="form-group">
-    <label for="complemento">Complemento</label>
-    <input type="text" class="form-control" id="complemento" [(ngModel)]="endereco.complemento">
-</div>
-<input class="btn btn-success" type="button" (click)="finalizar()" value="Finalizar"/>

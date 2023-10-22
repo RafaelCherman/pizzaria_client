@@ -1,10 +1,8 @@
-<h1>Monte sua Pizza</h1>
-
 <!-- 
    RADIO BUTTONS PARA SELECIONAR TAMANHO 
 -->
-<div class="row">
-    <div class="col-3 form-check form-check-inline" *ngFor="let tipo of tipos; let i = index">
+<div class="d-flex justify-content-around">
+    <div class="form-check form-check-inline" *ngFor="let tipo of tipos; let i = index">
         <input class="form-check-input" type="radio" (click)="selecionarTamanho(tipo)" name="inlineRadioOptions" id="opcao+(i+1)">
         <label class="form-check-label" for="opcao+(i+1)">{{tipo.nome}} R$ {{tipo.valor}}</label>
     </div>
@@ -14,8 +12,8 @@
     LISTAGEM EM TABELA PARA SELECIONAR SABORES
 -->
 <div class="row">
-    <p class="col-4">Escolha os Sabores</p>
-    <p class="offset-6 col-2">{{quantidade}}/{{total}}</p>
+    <h5 class="col-4">Escolha os Sabores</h5>
+    <h5 [ngClass]="{'maximo' : (quantidade == total && total != 0)}" class="offset-6 col-2">{{quantidade}}/{{total}}</h5>
 </div>
 <table class="table">
     <thead>
@@ -38,10 +36,12 @@
     </tbody>
 </table>
 
-<div>
-    <input type="button" class="btn btn-danger" value="Cancelar"/>
-    <div>
-        <p>Valor da Pizza: R${{valorPizza}}</p>
+<div class="row d-flex align-items-end">
+    <div class="offset-3 col-3">
+        <input type="button" class="btn btn-danger" value="Cancelar" (click)="cancelar()" />
+    </div>
+    <div class="col-3 d-flex flex-column align-items-center"> 
+        <a>Valor da Pizza: R${{valorPizza}}</a>
         <input (click)="adicionar()" type="button" class="btn btn-success" value="Adicionar"/>
     </div>
 </div>

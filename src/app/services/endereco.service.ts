@@ -27,6 +27,13 @@ export class EnderecoService {
     return this.http.get<Endereco[]>(this.API + "/all");
   }
 
+  listByCliente(id: number): Observable<Endereco[]> {
+    let params = new HttpParams()
+      .set('id', id)
+    return this.http.get<Endereco[]>(this.API + "/cliente", {params: params});
+  }
+
+
   save(endereco: Endereco): Observable<Endereco> {
     return this.http.post<Endereco>(this.API, endereco);
   }

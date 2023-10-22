@@ -76,20 +76,23 @@ export class PedidoselecionarpizzaComponent {
 
   adicionar()
   {
-    this.pizza.sabor = this.saboresSelecionados;
-    this.pizza.tipo = this.tipo;
+    if(this.saboresSelecionados.length > 0)
+    {
+      this.pizza.sabor = this.saboresSelecionados;
+      this.pizza.tipo = this.tipo;
 
-    this.pizzaService.save(this.pizza).subscribe({
-      next: sucesso =>{
-        this.retorno.emit(sucesso);
-        
-      },
-      error: erro =>{
-        alert('Exemplo de tratamento de erro/exception! Observe o erro no console!');
-        console.error(erro);
-        console.log(this.pizza);
-      }
-    })
+      this.pizzaService.save(this.pizza).subscribe({
+        next: sucesso =>{
+          this.retorno.emit(sucesso);
+          
+        },
+        error: erro =>{
+          alert('Exemplo de tratamento de erro/exception! Observe o erro no console!');
+          console.error(erro);
+          console.log(this.pizza);
+        }
+      })
+    }
   }
 
   selecionarTamanho(tipo: Pizzatipo){
@@ -131,8 +134,13 @@ export class PedidoselecionarpizzaComponent {
 
 
     }
-    
     console.log(this.saboresSelecionados);
   }
+
+  cancelar()
+  {
+    this.retorno.emit();
+  }
+
 
 }
