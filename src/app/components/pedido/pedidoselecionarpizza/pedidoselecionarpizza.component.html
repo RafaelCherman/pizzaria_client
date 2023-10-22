@@ -1,5 +1,42 @@
 <h1>Monte sua Pizza</h1>
 
+<!-- 
+   RADIO BUTTONS PARA SELECIONAR TAMANHO 
+-->
+<div class="row">
+    <div class="col-3 form-check form-check-inline" *ngFor="let tipo of tipos; let i = index">
+        <input class="form-check-input" type="radio" (click)="selecionarTamanho(tipo)" name="inlineRadioOptions" id="opcao+(i+1)">
+        <label class="form-check-label" for="opcao+(i+1)">{{tipo.nome}} R$ {{tipo.valor}}</label>
+    </div>
+</div>
+
+<!-- 
+    LISTAGEM EM TABELA PARA SELECIONAR SABORES
+-->
+<div class="row">
+    <p class="col-4">Escolha os Sabores</p>
+    <p class="offset-6 col-2">{{quantidade}}/{{total}}</p>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Ingredientes</th>
+            <th>Valor</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let obj of checkList">
+            <td>{{obj.sabor.nome}}</td>
+            <td>{{obj.sabor.ingredientes}}</td>
+            <td>R$ {{obj.sabor.valor}}</td>
+            <td>
+                <input type="checkbox" [disabled]="quantidade == total && !obj.selected || total == 0" [checked]="obj.selected" (change)="selecionarSabor($event, obj)"/>
+            </td>
+        </tr>
+    </tbody>
+</table>
 
 <div>
     <input type="button" class="btn btn-danger" value="Cancelar"/>

@@ -12,7 +12,7 @@ export class MenupedidoComponent {
 
   abrir(modal: any)
   { 
-    this.modalService.open(modal, { size: 'md' });
+    this.modalService.open(modal, { size: 'lg' });
   }
 
 }

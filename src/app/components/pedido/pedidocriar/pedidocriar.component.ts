@@ -25,22 +25,24 @@ export class PedidocriarComponent {
   constructor(){}
 
   abrirModalPizza(modal: any){
-    this.modalRef = this.modalService.open(modal, { size: 'md' });
+    this.modalRef = this.modalService.open(modal, { size: 'lg' });
   }
 
   abrirModalProduto(modal: any){
-    this.modalRef = this.modalService.open(modal, { size: 'md' });
+    this.modalRef = this.modalService.open(modal, { size: 'lg' });
   }
 
   addPizza(pizza: Pizza)
   {
     this.pizzaList.push(pizza);
+    this.valorTotal += pizza.valorPizza;
     this.modalRef.dismiss();
   }
 
   addProduto(produto: Produtodiverso)
   {
     this.produtoList.push(produto);
+    this.valorTotal += produto.preco;
     this.modalRef.dismiss();
   }
 

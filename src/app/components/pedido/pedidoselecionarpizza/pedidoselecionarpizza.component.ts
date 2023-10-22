@@ -5,6 +5,7 @@ import { Sabor } from 'src/app/models/sabor';
 import { PizzaService } from 'src/app/services/pizza.service';
 import { PizzatipoService } from 'src/app/services/pizzatipo.service';
 import { SaborService } from 'src/app/services/sabor.service';
+import { Checklist } from './checklist';
 
 @Component({
   selector: 'app-pedidoselecionarpizza',
@@ -13,32 +14,46 @@ import { SaborService } from 'src/app/services/sabor.service';
 })
 export class PedidoselecionarpizzaComponent {
 
+  pizzaService = inject(PizzaService);
+
   @Output() retorno = new EventEmitter<Pizza>();
   pizza: Pizza = new Pizza();
+  tipo: Pizzatipo = new Pizzatipo();
+  saboresSelecionados: Sabor[] = [];
+  
+  
+  
   valorPizza: number = 0;
+  checkList: Checklist[] = [];
 
 
-  pizzaService = inject(PizzaService);
+
+  
 
 
 
   //PARA TESTES
   sabores: Sabor[] = [];
-  pizzaTipo: Pizzatipo = new Pizzatipo();
+  tipos: Pizzatipo[] = [];
   saborService = inject(SaborService);
   pizzaTipoService = inject(PizzatipoService);
+  total: number = 0;
+  quantidade: number = 0;
   //ALTERAR RETORNOS DO BACKEND
 
   constructor()
   {
     this.listAllSabores();
-    this.findTipoById();
+    this.listAllTipos();
   }
 
   listAllSabores(){
     this.saborService.listAll().subscribe({
       next: lista =>{
-        this.sabores = lista;
+        for(let i of lista)
+        {
+          this.checkList.push({sabor: i, selected: false});
+        }
       },
       error: erro =>{
         alert('Exemplo de tratamento de erro/exception! Observe o erro no console!');
@@ -47,11 +62,11 @@ export class PedidoselecionarpizzaComponent {
     })
   }
   
-  findTipoById()
+  listAllTipos()
   {
-    this.pizzaTipoService.findById(1).subscribe({
-      next: tipo =>{
-        this.pizzaTipo = tipo;
+    this.pizzaTipoService.listAll().subscribe({
+      next: lista =>{
+        this.tipos = lista;
       },
       error: erro =>{
         alert('Exemplo de tratamento de erro/exception! Observe o erro no console!');
@@ -62,12 +77,12 @@ export class PedidoselecionarpizzaComponent {
 
   adicionar()
   {
-    this.pizza.tipo = this.pizzaTipo;
-    this.pizza.sabor = this.sabores;
+    this.pizza.sabor = this.saboresSelecionados;
+    this.pizza.tipo = this.tipo;
 
     this.pizzaService.save(this.pizza).subscribe({
       next: sucesso =>{
-        this.retorno.emit(this.pizza);
+        this.retorno.emit(sucesso);
         
       },
       error: erro =>{
@@ -76,6 +91,51 @@ export class PedidoselecionarpizzaComponent {
         console.log(this.pizza);
       }
     })
+  }
+
+  selecionarTamanho(tipo: Pizzatipo){
+    for(let i of this.checkList)
+    {
+      i.selected = false;
+    }
+    this.saboresSelecionados = [];
+    this.quantidade = 0;
+    this.total = tipo.qntSabores;
+    this.valorPizza = tipo.valor;
+    this.tipo = tipo;
+    console.log(this.saboresSelecionados);
+  }
+
+  selecionarSabor(event: any, obj: Checklist)
+  {
+    if(event.target.checked)
+    {
+      obj.selected = true;
+      this.quantidade += 1;
+      this.valorPizza += obj.sabor.valor;
+      this.saboresSelecionados.push(obj.sabor);
+    }
+    else if (!event.target.checked) {
+
+      let index: number;
+      obj.selected = false;
+      this.quantidade -= 1;
+      this.valorPizza -= obj.sabor.valor;
+
+      for(let i=0; i < this.saboresSelecionados.length; i++)
+      {
+        if(obj.sabor.id == this.saboresSelecionados[i].id)
+        {
+          index = i;
+          this.saboresSelecionados.splice(index, 1);
+          break;
+        }
+      }
+
+
+    }
+    
+    console.log(this.saboresSelecionados);
   }
 
 }

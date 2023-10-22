@@ -14,6 +14,9 @@ import { PedidoselecionarprodutoComponent } from './components/pedido/pedidosele
 import { MenupedidoComponent } from './components/pedido/escolhapedido/menupedido/menupedido.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { PedidopreencherenderecoComponent } from './components/pedido/pedidopreencherendereco/pedidopreencherendereco.component';
+import { PedidolistaselecionarComponent } from './components/pedido/pedidolistaselecionar/pedidolistaselecionar.component';
+import { PedidotiposelecionarComponent } from './components/pedido/pedidotiposelecionar/pedidotiposelecionar.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,10 @@ import { HttpClientModule } from '@angular/common/http';
     PedidocriarComponent,
     PedidoselecionarpizzaComponent,
     PedidoselecionarprodutoComponent,
-    MenupedidoComponent
+    MenupedidoComponent,
+    PedidopreencherenderecoComponent,
+    PedidolistaselecionarComponent,
+    PedidotiposelecionarComponent
   ],
   imports: [
     BrowserModule,
