@@ -1,28 +1,27 @@
 <h1>Escolha os Produtos</h1>
 
 <table class="table">
-    <div class="row">
-        <p class="col-4">Escolha os Prdutos</p>
-        <p></p>
-    </div>
     <thead>
         <tr>
-            <th>
-            </th>
+            <th>Nome</th>
+            <th>Tipo</th>
+            <th>Valor</th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-        <tr >
+        <tr *ngFor="let produto of produtos">
+            <td>{{produto.nome}}</td>
+            <td>{{produto.tipo}}</td>
+            <td>{{produto.preco}}</td>
             <td>
-                <input class="form-check-input" type="checkbox"/>
+                <input class="" type="number"/>
             </td>
         </tr>
     </tbody>
 </table>
 
 <div>
-    <app-pedidolistaselecionar></app-pedidolistaselecionar>
     <input type="button" class="btn btn-danger" value="Cancelar"/>
     <div>
         <p>Valor dos Produtos: R${{valorProdutos}}</p>

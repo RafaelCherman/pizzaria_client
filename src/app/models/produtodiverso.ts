@@ -1,8 +1,7 @@
 export class Produtodiverso {
 
     id!: number;
-    nomeProduto!: string;
+    nome!: string;
     tipo!: string;
     preco!: number;
-    quantidade!: number;
 }
