@@ -1,7 +1,8 @@
 export class Pizzatipo {
 
     id!: number;
-    nomePizza!: string;
+    nome!: string;
     tamanho!: string;
     valor!: number;
+    qntSabores!: number;
 }

@@ -2,6 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Pizza } from '../models/pizza';
+import { Resposta } from '../models/resposta';
 
 @Injectable({
   providedIn: 'root'
@@ -24,24 +25,24 @@ export class PizzaService {
     return this.http.get<Pizza[]>(this.API + "/all");
   }
 
-  save(pizza: Pizza): Observable<string> {
+  save(pizza: Pizza): Observable<Pizza> {
     let valor: number = this.calculaValorPizza(pizza);
     pizza.valorPizza = valor;
-    return this.http.post<string>(this.API, pizza);
+    return this.http.post<Pizza>(this.API, pizza);
   }
 
-  edit(id: number, pizza: Pizza): Observable<string>{
+  edit(id: number, pizza: Pizza): Observable<Pizza>{
     let params = new HttpParams()
       .set('id', id)
 
-      return this.http.put<string>(this.API, pizza, { params: params});
+      return this.http.put<Pizza>(this.API, pizza, { params: params});
   }
 
-  delete(id: number): Observable<any>{
+  delete(id: number): Observable<Resposta>{
     let params = new HttpParams()
       .set('id', id)
     
-    return this.http.delete<any>(this.API, {params: params});
+    return this.http.delete<Resposta>(this.API, {params: params});
   }
 
 

@@ -2,6 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Produtodiverso } from '../models/produtodiverso';
 import { Observable } from 'rxjs';
+import { Resposta } from '../models/resposta';
 
 @Injectable({
   providedIn: 'root'
@@ -24,21 +25,21 @@ export class ProdutodiversoService {
     return this.http.get<Produtodiverso[]>(this.API + "/all");
   }
 
-  save(produto: Produtodiverso): Observable<string> {
-    return this.http.post<string>(this.API, produto);
+  save(produto: Produtodiverso): Observable<Produtodiverso> {
+    return this.http.post<Produtodiverso>(this.API, produto);
   }
 
-  edit(id: number, produto: Produtodiverso): Observable<string>{
+  edit(id: number, produto: Produtodiverso): Observable<Produtodiverso>{
     let params = new HttpParams()
       .set('id', id)
 
-      return this.http.put<string>(this.API, produto, { params: params});
+      return this.http.put<Produtodiverso>(this.API, produto, { params: params});
   }
 
-  delete(id: number): Observable<any>{
+  delete(id: number): Observable<Resposta>{
     let params = new HttpParams()
       .set('id', id)
     
-    return this.http.delete<any>(this.API, {params: params});
+    return this.http.delete<Resposta>(this.API, {params: params});
   }
 }

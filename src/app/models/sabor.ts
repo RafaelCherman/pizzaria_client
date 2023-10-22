@@ -1,7 +1,7 @@
 export class Sabor {
 
     id!: number;
-    nomeSabor!: string;
+    nome!: string;
     ingredientes!: string;
     valor!: number;
 }
