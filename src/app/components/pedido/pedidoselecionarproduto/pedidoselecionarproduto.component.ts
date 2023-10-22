@@ -14,7 +14,10 @@ export class PedidoselecionarprodutoComponent {
 
   constructor()
   {
-    this.produto.preco = 50;
+    this.produto.nomeProduto = "Coca-Cola";
+    this.produto.tipo = "Refrigerante 2l";
+    this.produto.quantidade = 2;
+    this.produto.preco = 8;
   }
 
   adicionar()
