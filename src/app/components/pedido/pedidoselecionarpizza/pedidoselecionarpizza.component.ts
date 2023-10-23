@@ -55,7 +55,6 @@ export class PedidoselecionarpizzaComponent {
         }
       },
       error: erro =>{
-        alert('Exemplo de tratamento de erro/exception! Observe o erro no console!');
         console.error(erro);
       }
     })
@@ -68,7 +67,6 @@ export class PedidoselecionarpizzaComponent {
         this.tipos = lista;
       },
       error: erro =>{
-        alert('Exemplo de tratamento de erro/exception! Observe o erro no console!');
         console.error(erro);
       }
     })

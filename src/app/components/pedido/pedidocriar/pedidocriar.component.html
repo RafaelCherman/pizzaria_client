@@ -48,12 +48,17 @@
     </table>
 </div>
 <div class="row d-flex align-items-end">
-    <div class="offset-3 col-3">
+    <div class="offset-2 col-3">
         <input type="button" class="btn btn-danger" value="Cancelar" (click)="cancelar()" />
+    </div>
+    <div class="col-3 form-check form-switch">
+        <input class="form-check-input" (change)="solicitarEntrega($event)" type="checkbox" id="solicitaEntrega">
+        <label class="form-check-label" for="solicitaEntrega">Solicitar Entrega</label>
     </div>
     <div class="col-3 d-flex flex-column align-items-center">
         <a>Valor total: R${{valorTotal}}</a>
-        <input (click)="finalizaPedido(modal3)" type="button" class="btn btn-primary" value="Proximo"/>
+        <input *ngIf="entrega" (click)="finalizaPedido(modal3)" type="button" class="btn btn-primary" value="Proximo"/>
+        <input *ngIf="!entrega" (click)="finalizaPedido(modal3)" type="button" class="btn btn-primary" value="Finalizar"/>
     </div>
 </div>
 

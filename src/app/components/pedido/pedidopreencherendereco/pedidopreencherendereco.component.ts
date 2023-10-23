@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, inject } from '@angular/core';
 import { end } from '@popperjs/core';
 import { Cliente } from 'src/app/models/cliente';
 import { Endereco } from 'src/app/models/endereco';
@@ -12,46 +12,37 @@ import { PedidoService } from 'src/app/services/pedido.service';
   templateUrl: './pedidopreencherendereco.component.html',
   styleUrls: ['./pedidopreencherendereco.component.scss']
 })
-export class PedidopreencherenderecoComponent {
+export class PedidopreencherenderecoComponent implements OnInit{
 
-  clienteService = inject(ClienteService);
+  
   pedidoService = inject(PedidoService);
   enderecoService = inject(EnderecoService);
 
   @Output() retorno = new EventEmitter<any>();
   @Input() pedido: Pedido = new Pedido();
-
-  cliente: Cliente = new Cliente();
+  
   enderecos: Endereco[] = [];
   endereco: Endereco = new Endereco();
 
-  selecionado: boolean = false;
-  opcao: boolean = false;
+  selecionado: boolean = true;
+  opcao: boolean = true;
 
-  constructor()
-  {
-    this.findClientById();
+  constructor() {}
+
+  ngOnInit(): void {
+    this.listAllByCliente(this.pedido.cliente.id);
   }
 
-  findClientById()
+  listAllByCliente(id: number)
   {
-    this.clienteService.findById(1).subscribe({
-      next: cliente =>{
-        this.cliente = cliente;
-        this.enderecoService.listByCliente(cliente.id).subscribe({
-          next: lista =>{
-            this.enderecos = lista;
-          },
-          error: erro =>{
-            alert('Exemplo de tratamento de erro/exception! Observe o erro no console!');
-            console.error(erro);
-          }
-        })
+    this.enderecoService.listByCliente(id).subscribe({
+      next: lista =>{
+        this.enderecos = lista;
       },
-      error: erro =>{
-        alert('Exemplo de tratamento de erro/exception! Observe o erro no console!');
-        console.error(erro);
+      error: error =>{
+        console.log(error);
       }
+      
     })
   }
 
@@ -73,12 +64,11 @@ export class PedidopreencherenderecoComponent {
       });
     }
     else if(!this.selecionado){
-      this.endereco.cliente = this.cliente;
+      this.endereco.cliente = this.pedido.cliente;
       this.enderecoService.save(this.endereco).subscribe({
         next: endereco =>{
           this.pedido.endereco = endereco;
           
-          this.pedido.solicitaEntrega = true;
           this.pedidoService.save(this.pedido).subscribe({
             next: pedido =>{
               this.retorno.emit(pedido);

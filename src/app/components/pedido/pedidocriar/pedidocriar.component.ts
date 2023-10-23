@@ -1,8 +1,10 @@
-import { Component, EventEmitter, Output, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { Cliente } from 'src/app/models/cliente';
 import { Pedido } from 'src/app/models/pedido';
 import { Pizza } from 'src/app/models/pizza';
 import { Produtodiverso } from 'src/app/models/produtodiverso';
+import { PedidoService } from 'src/app/services/pedido.service';
 import { PizzaService } from 'src/app/services/pizza.service';
 
 @Component({
@@ -13,13 +15,17 @@ import { PizzaService } from 'src/app/services/pizza.service';
 export class PedidocriarComponent {
 
   pizzaService = inject(PizzaService);
+  pedidoService = inject(PedidoService)
   produtoList: Produtodiverso[] = [];
   pizzaList: Pizza[] = [];
   pedido: Pedido = new Pedido();
+  entrega: boolean = false;
 
   valorTotal: number = 0;
 
   @Output() retorno = new EventEmitter<any>();
+  @Input() cliente: Cliente = new Cliente();
+
   modalService = inject(NgbModal);
   modalRef!: NgbModalRef;
 
@@ -49,6 +55,7 @@ export class PedidocriarComponent {
         if(pizza.id == this.pizzaList[i].id)
         {
           this.pizzaList.splice(i, 1);
+          this.deletarPizza(pizza.id);
           break;
         }
     }
@@ -80,6 +87,11 @@ export class PedidocriarComponent {
     }
   }
 
+  solicitarEntrega(solicitacao: any)
+  {
+    this.entrega = solicitacao.target.checked;
+  }
+
   finalizaPedido(modal: any)
   {
     
@@ -88,10 +100,28 @@ export class PedidocriarComponent {
       this.pedido.pizzas = this.pizzaList;
       this.pedido.produtos = this.produtoList;
       this.pedido.valorTotal = this.valorTotal;
-      this.abrirModal(modal);
+      this.pedido.solicitaEntrega = this.entrega;
+      this.pedido.cliente = this.cliente;
       console.log(this.pizzaList);
       console.log(this.produtoList);
       console.log(this.pedido);  
+      if(this.entrega)
+      {
+        alert("lata")
+        this.abrirModal(modal);
+      }
+      else if(!this.entrega)
+      {
+        this.pedidoService.save(this.pedido).subscribe({
+          next: pedido =>{
+            this.retorno.emit(pedido);
+          },
+          error: erro =>{
+            alert('Exemplo de tratamento de erro/exception! Observe o erro no console!');
+            console.error(erro);
+          }
+        });
+      }
     }
   }
 
@@ -113,18 +143,23 @@ export class PedidocriarComponent {
     {
       for(let i of this.pizzaList)
       {
-        this.pizzaService.delete(i.id).subscribe({
-          next: resposta =>{
-            console.log(resposta.mensagem);
-          },
-          error: erro =>{
-            alert("Erro. Consulte o console");
-            console.log(erro);
-          }
-        })
+        this.deletarPizza(i.id);
       }
     }
     this.retorno.emit();
+  }
+
+  deletarPizza(id: number)
+  {
+    this.pizzaService.delete(id).subscribe({
+      next: resposta =>{
+        console.log(resposta.mensagem);
+      },
+      error: erro =>{
+        alert("Erro. Consulte o console");
+        console.log(erro);
+      }
+    });
   }
 
 
