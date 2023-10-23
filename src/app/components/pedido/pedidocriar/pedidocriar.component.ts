@@ -102,12 +102,12 @@ export class PedidocriarComponent {
       this.pedido.valorTotal = this.valorTotal;
       this.pedido.solicitaEntrega = this.entrega;
       this.pedido.cliente = this.cliente;
+      this.pedido.situacaoPedido = "AConfirmar";
       console.log(this.pizzaList);
       console.log(this.produtoList);
       console.log(this.pedido);  
       if(this.entrega)
       {
-        alert("lata")
         this.abrirModal(modal);
       }
       else if(!this.entrega)
@@ -130,6 +130,7 @@ export class PedidocriarComponent {
     if(pedido)
     {
       this.modalService.dismissAll();
+      this.retorno.emit(pedido);
     }
     else
     {
