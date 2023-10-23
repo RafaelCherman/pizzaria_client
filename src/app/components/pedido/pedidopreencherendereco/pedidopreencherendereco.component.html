@@ -1,10 +1,10 @@
 
 <div class="row d-flex align-items-end">
-    <div class="offset-3 col-3">
-        <p class="p-b" [ngClass]="{'selecionado' : (!selecionado)}" (click)="escolher(false)">Cadastrar</p>
-    </div>
-    <div class="col-3"> 
+    <div class="offset-3 col-3"> 
         <p class="p-b" [ngClass]="{'selecionado' : (selecionado)}" (click)="escolher(true)">Escolher</p>
+    </div>
+    <div class="col-3">
+        <p class="p-b" [ngClass]="{'selecionado' : (!selecionado)}" (click)="escolher(false)">Cadastrar</p>
     </div>
 </div>
 

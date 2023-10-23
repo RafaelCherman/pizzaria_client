@@ -27,6 +27,6 @@
     </div>
     <div class="modal-body">
        
-        <app-pedidocriar (retorno)="fechar($event)"></app-pedidocriar>
+        <app-pedidocriar [cliente]="cliente" (retorno)="fechar($event)"></app-pedidocriar>
     </div>
 </ng-template>
