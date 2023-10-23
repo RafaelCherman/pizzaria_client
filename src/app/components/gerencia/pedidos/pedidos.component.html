@@ -1,14 +1,26 @@
 <div class="row">
     <div class="col-3">
-        <p>Pedidos em Espera</p>
+        <p (click)="selecionar('confirmar')" [ngClass]="{'selecionado' : (selecionado == 'confirmar')}" class="p-b">Pedidos em Espera</p>
     </div>
     <div class="col-3">
-        <p>Pedidos em Andamento</p>
+        <p (click)="selecionar('andamento')" [ngClass]="{'selecionado' : (selecionado == 'andamento')}" class="p-b">Pedidos em Andamento</p>
     </div>
     <div class="col-3">
-        <p>Pedidos Finalizados</p>
+        <p (click)="selecionar('finalizado')" [ngClass]="{'selecionado' : (selecionado == 'finalizado')}" class="p-b">Pedidos Finalizados</p>
     </div>
     <div class="col-3">
         <input type="button" class="btn btn-success" value="Adicionar Pedido" />
     </div>
+</div>
+
+<div *ngIf="selecionado == 'confirmar'">
+
+</div>
+
+<div *ngIf="selecionado == 'andamento'">
+    
+</div>
+
+<div *ngIf="selecionado == 'finalizado'">
+    
 </div>
