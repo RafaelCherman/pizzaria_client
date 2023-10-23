@@ -4,6 +4,7 @@ import { IndexComponent } from './components/layout/index/index.component';
 import { LoginComponent } from './components/sistemas/login/login.component';
 import { MenupedidoComponent } from './components/pedido/escolhapedido/menupedido/menupedido.component';
 import {SidemenuComponent} from "./components/layout/sidemenu/sidemenu.component";
+import { PedidosComponent } from './components/gerencia/pedidos/pedidos.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "login", pathMatch: 'full'},
@@ -11,7 +12,8 @@ const routes: Routes = [
   { path: "user", component: IndexComponent, children:[
     {path: "menu", component: MenupedidoComponent},
   ]},
-  {path: "menulateral", component: SidemenuComponent}
+  {path: "menulateral", component: SidemenuComponent},
+  {path: "pedidos", component: PedidosComponent}
 
 ];
 

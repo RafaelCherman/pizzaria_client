@@ -17,6 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { PedidopreencherenderecoComponent } from './components/pedido/pedidopreencherendereco/pedidopreencherendereco.component';
 import { SidemenuComponent } from './components/layout/sidemenu/sidemenu.component';
 import { IndexadminComponent } from './components/layout/indexadmin/indexadmin.component';
+import { PedidosComponent } from './components/gerencia/pedidos/pedidos.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { IndexadminComponent } from './components/layout/indexadmin/indexadmin.c
     PedidopreencherenderecoComponent,
     SidemenuComponent,
     IndexadminComponent,
+    PedidosComponent,
   ],
   imports: [
     BrowserModule,
