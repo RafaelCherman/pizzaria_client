@@ -6,9 +6,11 @@ import { MenupedidoComponent } from './components/pedido/escolhapedido/menupedid
 import {SidemenuComponent} from "./components/layout/sidemenu/sidemenu.component";
 
 const routes: Routes = [
-  { path: "teste", component: IndexComponent},
+  { path: "", redirectTo: "login", pathMatch: 'full'},
   {path: "login", component: LoginComponent},
-  {path: "menu", component: MenupedidoComponent},
+  { path: "user", component: IndexComponent, children:[
+    {path: "menu", component: MenupedidoComponent},
+  ]},
   {path: "menulateral", component: SidemenuComponent}
 
 ];
