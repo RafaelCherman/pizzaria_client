@@ -15,6 +15,8 @@ import { MenupedidoComponent } from './components/pedido/escolhapedido/menupedid
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { PedidopreencherenderecoComponent } from './components/pedido/pedidopreencherendereco/pedidopreencherendereco.component';
+import { SidemenuComponent } from './components/layout/sidemenu/sidemenu.component';
+import { IndexadminComponent } from './components/layout/indexadmin/indexadmin.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { PedidopreencherenderecoComponent } from './components/pedido/pedidopree
     PedidoselecionarprodutoComponent,
     MenupedidoComponent,
     PedidopreencherenderecoComponent,
+    SidemenuComponent,
+    IndexadminComponent,
   ],
   imports: [
     BrowserModule,

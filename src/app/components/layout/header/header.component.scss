@@ -1,0 +1,31 @@
+.container-fluid{
+  background-color: #3E88F6;
+  display: flex;
+  justify-content: space-between;
+position: sticky;
+
+}
+
+.logo{
+  width: 13%;
+  text-align: center;
+}
+.bi{
+width: 2%;
+  color: white;
+  fill: white;
+}
+.bi-cart3{
+  fill: white;
+  width: 2%;
+}
+.modal-body{
+  width: 20vw;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.disbaled{
+  display: none;
+}

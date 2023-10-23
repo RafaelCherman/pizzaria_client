@@ -1,0 +1,70 @@
+.card{
+  max-width: 30vw;
+
+  height: 80vh;
+  border-color: #3d87f6;
+  position: absolute;
+  top: 65px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+.disabled{
+  display: none;
+}
+.organiza_itens{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 50%;
+}
+
+.group_acess{
+  position: relative;
+  bottom: 0;
+  text-align: center;
+}
+
+h4{
+  font-family: kdammthmor, sans-serif;
+  font-size: small;
+}
+
+.btn{
+  color: #fff;
+  background-color: #3d87f6;
+  opacity: 0.60;
+  border: none;
+  font-family: kdammthmor, sans-serif;
+  max-width: 100%;
+  min-width: 150px;
+  box-shadow: #a3a1a1 -2px 2px 10px 1px;
+
+}
+.btn:hover{
+  background: #3d87f6;
+  opacity: 1;
+}
+
+.btn-success{
+  background-color: #07d459;
+}
+
+.btn-success:hover{
+  background-color: green;
+  opacity: 1;
+}
+
+.total{
+
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  position: absolute;
+
+
+}

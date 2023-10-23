@@ -1,0 +1,32 @@
+.container-fluid{
+  background-color: #3E88F6;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+}
+
+.icone{
+  width: 7%;
+  padding-left: 10px;
+
+
+}
+.org_center{
+  display: flex;
+  justify-content: center;
+  width: 35%;
+}
+
+
+.imagem_pizza{
+  width: 3%;
+}
+
+h2{
+  color: white;
+  font-size: 80%;
+  font-family: "Londrina Solid", cursive;
+
+}
