@@ -20,6 +20,7 @@ export class PedidocriarComponent {
   pizzaList: Pizza[] = [];
   pedido: Pedido = new Pedido();
   entrega: boolean = false;
+  data: Date = new Date();
 
   valorTotal: number = 0;
 
@@ -103,6 +104,7 @@ export class PedidocriarComponent {
       this.pedido.solicitaEntrega = this.entrega;
       this.pedido.cliente = this.cliente;
       this.pedido.situacaoPedido = "AConfirmar";
+      this.pedido.data = this.data.toLocaleDateString();
       console.log(this.pizzaList);
       console.log(this.produtoList);
       console.log(this.pedido);  

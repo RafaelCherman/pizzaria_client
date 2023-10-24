@@ -40,10 +40,10 @@
                     {{pedido.data}}
                 </td>
                 <td>
-                    R$ {{pedido.valorTotal}}
+                    {{pedido.situacaoPedido}}
                 </td>
                 <td>
-                    {{pedido.situacaoPedido}}
+                    R$ {{pedido.valorTotal}}
                 </td>
                 <td>
                     <input type="button" class="btn btn-warning" value="Gerenciar" (click)="gerenciar(pedido.id)"/>
