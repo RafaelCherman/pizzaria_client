@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { Pedido } from 'src/app/models/pedido';
 import { PedidoService } from 'src/app/services/pedido.service';
 
@@ -10,6 +11,7 @@ import { PedidoService } from 'src/app/services/pedido.service';
 export class ExibepedidoComponent implements OnInit{
 
   pedidoService = inject(PedidoService);
+  router = inject(Router);
 
 
   @Input() situacao: string = "";
@@ -38,6 +40,6 @@ export class ExibepedidoComponent implements OnInit{
 
   gerenciar(id: number)
   {
-
+    this.router.navigate(['pedidos/editar/'+ id]);
   }
 }

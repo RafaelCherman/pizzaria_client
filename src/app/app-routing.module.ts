@@ -11,6 +11,7 @@ import { ProdutosComponent } from './components/gerencia/produtos/produtos.compo
 import { GerenciatipoComponent } from './components/gerencia/tipos/gerenciatipo/gerenciatipo.component';
 import { GerenciasaborComponent } from './components/gerencia/sabores/gerenciasabor/gerenciasabor.component';
 import { GerenciaprodutoComponent } from './components/gerencia/produtos/gerenciaproduto/gerenciaproduto.component';
+import { GerenciapedidoComponent } from './components/gerencia/pedidos/gerenciapedido/gerenciapedido.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "login", pathMatch: 'full'},
@@ -20,6 +21,7 @@ const routes: Routes = [
   ]},
   {path: "menulateral", component: SidemenuComponent},
   {path: "pedidos", component: PedidosComponent},
+  {path: "pedidos/editar/:id", component: GerenciapedidoComponent},
   {path: "sabores", component: SaboresComponent},
   {path: "sabores/novo", component: GerenciasaborComponent},
   {path: "sabores/editar/:id", component: GerenciasaborComponent},
