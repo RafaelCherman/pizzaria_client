@@ -6,6 +6,14 @@ import { MenupedidoComponent } from './components/pedido/escolhapedido/menupedid
 import {SidemenuComponent} from "./components/layout/sidemenu/sidemenu.component";
 import {IndexadminComponent} from "./components/layout/admin/indexadmin/indexadmin.component";
 import {TipopizzalistComponent} from "./components/layout/admin/tipopizzalist/tipopizzalist.component";
+import { PedidosComponent } from './components/gerencia/pedidos/pedidos.component';
+import { GerenciapedidoComponent } from './components/gerencia/pedidos/gerenciapedido/gerenciapedido.component';
+import { SaboresComponent } from './components/gerencia/sabores/sabores.component';
+import { GerenciasaborComponent } from './components/gerencia/sabores/gerenciasabor/gerenciasabor.component';
+import { TiposComponent } from './components/gerencia/tipos/tipos.component';
+import { GerenciatipoComponent } from './components/gerencia/tipos/gerenciatipo/gerenciatipo.component';
+import { ProdutosComponent } from './components/gerencia/produtos/produtos.component';
+import { GerenciaprodutoComponent } from './components/gerencia/produtos/gerenciaproduto/gerenciaproduto.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "login", pathMatch: 'full'},
