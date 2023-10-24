@@ -1,0 +1,42 @@
+<div>
+    <table class="table table-bordered">
+        <thead>
+            <tr class="row">
+                <th class="col-2">
+                    Nome
+                </th>
+                <th class="col-2">
+                    Tamanho
+                </th>
+                <th class="col-3">
+                    Quantidade de Sabores
+                </th>
+                <th class="col-2">
+                    Valor
+                </th>
+                <th class="col-3" *ngIf="gerencia">
+                    Opções
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let tipo of tipos" class="row">
+                <td class="col-2">
+                    {{tipo.nome}}
+                </td>
+                <td class="col-2">
+                    {{tipo.tamanho}}
+                </td>
+                <td class="col-3">
+                    {{tipo.qntSabores}}
+                </td>
+                <td class="col-2">
+                    {{tipo.valor}}
+                </td>
+                <td class="col-3" *ngIf="gerencia">
+                    <input type="button" class="btn btn-warning" value="Gerenciar" (click)="gerenciar(tipo.id)" />
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

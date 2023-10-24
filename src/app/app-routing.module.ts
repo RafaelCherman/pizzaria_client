@@ -8,13 +8,30 @@ import {IndexadminComponent} from "./components/layout/admin/indexadmin/indexadm
 import {TipopizzalistComponent} from "./components/layout/admin/tipopizzalist/tipopizzalist.component";
 
 const routes: Routes = [
-  { path: "", component: IndexComponent},
+  { path: "", redirectTo: "login", pathMatch: 'full'},
   {path: "login", component: LoginComponent},
   {path: "menu", component: MenupedidoComponent},
   {path: "menulateral", component: SidemenuComponent},
   {path: "admin", component: IndexadminComponent, children: [
       {path: "tipoDePizza", component: TipopizzalistComponent }
     ]},
+  { path: "user", component: IndexComponent, children:[
+    {path: "menu", component: MenupedidoComponent},
+  ]},
+  {path: "menulateral", component: SidemenuComponent},
+  {path: "pedidos", component: PedidosComponent},
+  {path: "pedidos/editar/:id", component: GerenciapedidoComponent},
+  {path: "sabores", component: SaboresComponent},
+  {path: "sabores/novo", component: GerenciasaborComponent},
+  {path: "sabores/editar/:id", component: GerenciasaborComponent},
+  {path: "tipos", component: TiposComponent},
+  {path: "tipos/novo", component: GerenciatipoComponent},
+  {path: "tipos/editar/:id", component: GerenciatipoComponent},
+  {path: "produtos", component: ProdutosComponent},
+  {path: "produtos/novo", component: GerenciaprodutoComponent},
+  {path: "produtos/editar/:id", component: GerenciaprodutoComponent}
+
+
 
 ];
 

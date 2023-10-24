@@ -1,0 +1,54 @@
+<div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>
+                    Pedido Nº
+                </th>
+                <th>
+                    Cliente
+                </th>
+                <th>
+                    Endereço
+                </th>
+                <th>
+                    Data do Pedido
+                </th>
+                <th>
+                    Status
+                </th>
+                <th>
+                    Valor Total
+                </th>
+                <th>
+                    Opções
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let pedido of pedidos">    
+                <td>
+                    {{pedido.id}}
+                </td>
+                <td>
+                    {{pedido.cliente.nome}}
+                </td>
+                <td>
+                    {{pedido.endereco.rua}}, {{pedido.endereco.nuEndereco}} - {{pedido.endereco.bairro}}
+                </td>
+                <td>
+                    {{pedido.data}}
+                </td>
+                <td>
+                    {{pedido.situacaoPedido}}
+                </td>
+                <td>
+                    R$ {{pedido.valorTotal}}
+                </td>
+                <td>
+                    <input type="button" class="btn btn-warning" value="Gerenciar" (click)="gerenciar(pedido.id)"/>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,36 @@
+<div>
+    <table class="table table-bordered">
+        <thead>
+            <tr class="row">
+                <th class="col-2">
+                    Nome
+                </th>
+                <th class="col-4">
+                    Tipo
+                </th>
+                <th class="col-2">
+                    Valor
+                </th>
+                <th class="col-4" *ngIf="gerencia">
+                    Opções
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let produto of produtos" class="row">
+                <td class="col-2">
+                    {{produto.nome}}
+                </td>
+                <td class="col-4">
+                    {{produto.tipo}}
+                </td>
+                <td class="col-2">
+                    {{produto.preco}}
+                </td>
+                <td class="col-4" *ngIf="gerencia">
+                    <input type="button" class="btn btn-warning" value="Gerenciar" (click)="gerenciar(produto.id)" />
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -48,7 +48,6 @@ export class PedidopreencherenderecoComponent implements OnInit{
 
   finalizar()
   {
-    this.pedido.situacaoPedido = "A confirmar";
 
     if(this.selecionado)
     {

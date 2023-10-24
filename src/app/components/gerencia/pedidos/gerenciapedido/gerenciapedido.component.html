@@ -1,0 +1,118 @@
+<h3>Pedido Nº{{pedido.id}}</h3>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                Cliente
+            </th>
+            <th>
+                Endereco
+            </th>
+            <th>
+                Data do Pedido
+            </th>
+            <th>
+                Status
+            </th>
+            <th>
+                Valor Total
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                {{pedido.cliente.nome}}
+            </td>
+            <td>
+                {{pedido.endereco.rua}}, {{pedido.endereco.nuEndereco}} - {{pedido.endereco.bairro}}
+            </td>
+            <td>
+                {{pedido.data}}
+            </td>
+            <td>
+                {{pedido.situacaoPedido}}
+            </td>
+            <td>
+                R$ {{pedido.valorTotal}}
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<h4>Pizzas</h4>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                Tamanho
+            </th>
+            <th>
+                Sabores
+            </th>
+            <th>
+                Valor
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let pizza of pedido.pizzas">
+            <td>
+                {{pizza.tipo.nome}}
+            </td>
+            <td>
+                <a *ngFor="let sabor of pizza.sabor">
+                    {{sabor.nome}}.
+                </a>
+            </td>
+            <td>
+                R$ {{pizza.valorPizza}}
+            </td>
+            
+        </tr>
+    </tbody>
+</table>
+
+<h4>Produtos</h4>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                Nome
+            </th>
+            <th>
+                Tipo
+            </th>
+            <th>
+                Valor
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let produto of pedido.produtos">
+            <td>
+                {{produto.nome}}
+            </td>
+            <td>
+                {{produto.tipo}}
+            </td>
+            <td>
+                R$ {{produto.preco}}
+            </td>
+            
+        </tr>
+    </tbody>
+</table>
+
+<div class="row">
+    <div class="offset-3 col-3">
+        <input type="button" (click)="voltar()" class="btn btn-secondary" value="Voltar"/>
+    </div>
+    <div *ngIf="(pedido.situacaoPedido == 'AConfirmar')" class="col-3">
+        <input  type="button" (click)="recusar()" class="btn btn-danger" value="Recusar"/>
+    </div>
+    <div class="col-3">
+        <input *ngIf="(pedido.situacaoPedido == 'AConfirmar')" type="button" (click)="avancar('EmAndamento')" class="btn btn-success" value="Aceitar"/>
+        <input *ngIf="(pedido.situacaoPedido == 'EmAndamento')" type="button" (click)="avancar('Finalizado')" class="btn btn-primary" value="Finalizar"/>
+    </div>
+</div>

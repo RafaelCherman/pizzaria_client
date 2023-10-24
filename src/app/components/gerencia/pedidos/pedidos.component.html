@@ -1,0 +1,53 @@
+<div class="row">
+    <div class="col-3">
+        <p (click)="selecionar('confirmar')" [ngClass]="{'selecionado' : (selecionado == 'confirmar')}" class="p-b">Pedidos em Espera</p>
+    </div>
+    <div class="col-3">
+        <p (click)="selecionar('andamento')" [ngClass]="{'selecionado' : (selecionado == 'andamento')}" class="p-b">Pedidos em Andamento</p>
+    </div>
+    <div class="col-3">
+        <p (click)="selecionar('finalizado')" [ngClass]="{'selecionado' : (selecionado == 'finalizado')}" class="p-b">Pedidos Finalizados</p>
+    </div>
+    <div class="col-3">
+        <input (click)="abrir(modal1)" type="button" class="btn btn-success" value="Adicionar Pedido" />
+    </div>
+</div>
+
+<div *ngIf="selecionado == 'confirmar'">
+    
+    <app-exibepedido [situacao]="'AConfirmar'"></app-exibepedido>
+    
+</div>
+
+<div *ngIf="selecionado == 'andamento'">
+    
+    <app-exibepedido [situacao]="'EmAndamento'"></app-exibepedido>
+
+</div>
+
+<div *ngIf="selecionado == 'finalizado'">
+
+    <app-exibepedido [situacao]="'Finalizado'"></app-exibepedido>
+
+</div>
+
+<ng-template #modal1 let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">Cliente</h4>
+    </div>
+    <div class="modal-body">
+       
+        <app-clientecriar (retorno)="fechar($event)"></app-clientecriar>
+        
+    </div>
+</ng-template>
+
+<ng-template #modal2 let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">Seu Pedido</h4>
+    </div>
+    <div class="modal-body">
+       
+        <app-pedidocriar [cliente]="cliente" (retorno)="fechar($event)"></app-pedidocriar>
+    </div>
+</ng-template>

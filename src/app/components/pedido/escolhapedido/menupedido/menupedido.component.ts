@@ -26,7 +26,6 @@ export class MenupedidoComponent {
         this.cliente = cliente;
       },
       error: erro =>{
-        alert('Exemplo de tratamento de erro/exception! Observe o erro no console!');
         console.error(erro);
       }
     })
