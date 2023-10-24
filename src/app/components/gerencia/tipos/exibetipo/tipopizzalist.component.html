@@ -1,8 +1,10 @@
 
 <section class="organiza_itens">
+
 <table class="table table-hover">
-  <button type="button" class="btn btn-primary success" (click)="novo()">Novo</button>
+
 <thead>
+<button type="button" class="btn btn-primary success" (click)="cadastrar(content)">Cadastrar novo</button>
     <tr>
       <th scope="col">Cod.</th>
       <th scope="col">Nome</th>
@@ -20,8 +22,8 @@
       <td>{{valor.valor}}</td>
       <td>{{valor.qntSabores}}</td>
       <td>
-        <button type="button" class="btn btn-primary accion" (click)="editar(valor.id)">Editar</button>
-        <button type="button" class="btn btn-danger accion" (click)="excluir(valor.id)">Excluir</button>
+        <button type="button" class="btn btn-primary accion" (click)="editar(content, valor)">Editar</button>
+        <button type="button" class="btn btn-danger accion" (click)="excluir(content, valor)">Excluir</button>
       </td>
     </tr>
   </tbody>
@@ -35,7 +37,7 @@
     <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
   </div>
   <div class="modal-body">
-    <app-pessoadetails [injetaPessoa]="enviarPessoa" (retorno)="addPessoa($event)"></app-pessoadetails>
+<app-gerenciatipo [objetoEnviado]="objeto" [opcaoBotao]="opcaoBotao" ></app-gerenciatipo>
   </div>
 
 </ng-template>

@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ExibetipoComponent } from './exibetipo.component';
+import { AdminAreaComponent } from './admin.area.component';
 
-describe('ExibetipoComponent', () => {
-  let component: ExibetipoComponent;
-  let fixture: ComponentFixture<ExibetipoComponent>;
+describe('AdminAreaComponent', () => {
+  let component: AdminAreaComponent;
+  let fixture: ComponentFixture<AdminAreaComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ExibetipoComponent]
+      declarations: [AdminAreaComponent]
     });
-    fixture = TestBed.createComponent(ExibetipoComponent);
+    fixture = TestBed.createComponent(AdminAreaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

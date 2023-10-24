@@ -16,18 +16,17 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { PedidopreencherenderecoComponent } from './components/pedido/pedidopreencherendereco/pedidopreencherendereco.component';
 import { SidemenuComponent } from './components/layout/sidemenu/sidemenu.component';
-import { IndexadminComponent } from './components/layout/admin/indexadmin/indexadmin.component';
 import { MenuadminComponent } from './components/layout/admin/menuadmin/menuadmin.component';
 import { HeaderadminComponent } from './components/layout/admin/headeradmin/headeradmin.component';
-import { TipopizzalistComponent } from './components/layout/admin/tipopizzalist/tipopizzalist.component';
-import { IndexadminComponent } from './components/layout/indexadmin/indexadmin.component';
+import { TipopizzalistComponent } from './components/gerencia/tipos/exibetipo/tipopizzalist.component';
+import { IndexadminComponent } from './components/layout/admin/indexadmin/indexadmin.component';
+
 import { PedidosComponent } from './components/gerencia/pedidos/pedidos.component';
 import { ExibepedidoComponent } from './components/gerencia/pedidos/exibepedido/exibepedido.component';
 import { GerenciapedidoComponent } from './components/gerencia/pedidos/gerenciapedido/gerenciapedido.component';
 import { SaboresComponent } from './components/gerencia/sabores/sabores.component';
 import { TiposComponent } from './components/gerencia/tipos/tipos.component';
 import { ProdutosComponent } from './components/gerencia/produtos/produtos.component';
-import { ExibetipoComponent } from './components/gerencia/tipos/exibetipo/exibetipo.component';
 import { GerenciatipoComponent } from './components/gerencia/tipos/gerenciatipo/gerenciatipo.component';
 import { ExibesaborComponent } from './components/gerencia/sabores/exibesabor/exibesabor.component';
 import { GerenciasaborComponent } from './components/gerencia/sabores/gerenciasabor/gerenciasabor.component';
@@ -59,7 +58,6 @@ import { ClientecriarComponent } from './components/cliente/clientecriar/cliente
     SaboresComponent,
     TiposComponent,
     ProdutosComponent,
-    ExibetipoComponent,
     GerenciatipoComponent,
     ExibesaborComponent,
     GerenciasaborComponent,

@@ -8,19 +8,19 @@
 <div class="row d-flex justify-content-center">
     <div class="col-5 form-group">
         <label for="nome">Nome</label>
-        <input type="text" class="form-control" id="nome" [(ngModel)]="tipo.nome">
+        <input [disabled]="opcaoBotao=='Excluir'" type="text" class="form-control" id="nome" [(ngModel)]="tipo.nome">
     </div>
     <div class="col-5 form-group">
         <label for="tamanho">Tamanho</label>
-        <input type="text" class="form-control" id="tamanho" [(ngModel)]="tipo.tamanho">
+        <input [disabled]="opcaoBotao=='Excluir'" type="text" class="form-control" id="tamanho" [(ngModel)]="tipo.tamanho">
     </div>
     <div class="col-5 form-group">
         <label for="valor">Valor</label>
-        <input type="number" class="form-control" id="valor" [(ngModel)]="tipo.valor">
+        <input [disabled]="opcaoBotao=='Excluir'" type="number" class="form-control" id="valor" [(ngModel)]="tipo.valor">
     </div>
     <div class="col-5 form-group">
         <label for="qntSabores">Quantidade de sabores</label>
-        <input type="text" class="form-control" id="qntSabores" [(ngModel)]="tipo.qntSabores">
+        <input [disabled]="opcaoBotao=='Excluir'" type="text" class="form-control" id="qntSabores" [(ngModel)]="tipo.qntSabores">
     </div>
 </div>
 
@@ -29,7 +29,9 @@
         <input type="button" class="btn btn-secondary" value="Voltar" (click)="voltar()" />
     </div>
     <div class="col-3">
-        <input *ngIf="edicao" class="btn btn-warning" value="Editar" (click)="editar()"/>
-        <input *ngIf="!edicao" class="btn btn-success" value="Cadastrar" (click)="cadastrar()" />
+        <input *ngIf="opcaoBotao=='Editar'" class="btn btn-warning" value="Editar" (click)="editar()"/>
+        <input *ngIf="opcaoBotao=='Cadastrar'" class="btn btn-success" value="Cadastrar" (click)="cadastrar()" />
+      <input *ngIf="opcaoBotao=='Excluir'" class="btn btn-danger" value="Excluir" (click)="excluir()" />
+
     </div>
 </div>
