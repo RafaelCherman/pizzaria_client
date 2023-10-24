@@ -9,7 +9,7 @@
         <p (click)="selecionar('finalizado')" [ngClass]="{'selecionado' : (selecionado == 'finalizado')}" class="p-b">Pedidos Finalizados</p>
     </div>
     <div class="col-3">
-        <input type="button" class="btn btn-success" value="Adicionar Pedido" />
+        <input (click)="abrir(modal1)" type="button" class="btn btn-success" value="Adicionar Pedido" />
     </div>
 </div>
 
@@ -29,5 +29,25 @@
 
     <app-exibepedido [situacao]="'Finalizado'"></app-exibepedido>
 
-    
 </div>
+
+<ng-template #modal1 let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">Cliente</h4>
+    </div>
+    <div class="modal-body">
+       
+        <app-clientecriar (retorno)="fechar($event)"></app-clientecriar>
+        
+    </div>
+</ng-template>
+
+<ng-template #modal2 let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">Seu Pedido</h4>
+    </div>
+    <div class="modal-body">
+       
+        <app-pedidocriar [cliente]="cliente" (retorno)="fechar($event)"></app-pedidocriar>
+    </div>
+</ng-template>

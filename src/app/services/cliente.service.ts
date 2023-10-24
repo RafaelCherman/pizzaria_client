@@ -20,6 +20,13 @@ export class ClienteService {
     return this.http.get<Cliente>(this.API, {params: params});
   }
 
+  findByCpf(cpf: string): Observable<Cliente>{
+    let params = new HttpParams()
+      .set('cpf', cpf)
+    
+    return this.http.get<Cliente>(this.API + "/cpf", {params: params});
+  }
+
   listAll(): Observable<Cliente[]> {
     return this.http.get<Cliente[]>(this.API + "/all");
   }
