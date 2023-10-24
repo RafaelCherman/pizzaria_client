@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidemenu',
@@ -7,6 +8,8 @@ import { Component } from '@angular/core';
 })
 export class SidemenuComponent {
   classname: string = "disabled"
+  roteador = inject(Router);
+
 
   toggle(){
     if(this.classname === "disabled"){
@@ -20,5 +23,8 @@ export class SidemenuComponent {
     this.classname = "disabled"
   }
 
+  login(){
+    this.roteador.navigate(['login']);
+  }
 
 }
