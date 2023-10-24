@@ -15,8 +15,12 @@ export class LoginComponent {
 
   logar() {
 
-    if (this.usuario.login == 'user' && this.usuario.senha == 'user')
+    if (this.usuario.login == 'user' && this.usuario.senha == 'user'){
       this.roteador.navigate(['user/menu']);
+    }
+    else if (this.usuario.login == 'admin' && this.usuario.senha == 'admin') {
+      this.roteador.navigate(['pedidos']);
+    }
     else
       alert('Login ou senha incorretos!');
   }

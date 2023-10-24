@@ -21,18 +21,7 @@ const routes: Routes = [
   {path: "menu", component: MenupedidoComponent},
   {path: "menulateral", component: SidemenuComponent},
   {path: "admin", component: IndexadminComponent, children: [
-      {path: "tipoDePizza", component: TipopizzalistComponent },
-      {path: "pedidos", component: PedidosComponent},
-      {path: "pedidos/editar/:id", component: GerenciapedidoComponent},
-      {path: "sabores", component: SaboresComponent},
-      {path: "sabores/novo", component: GerenciasaborComponent},
-      {path: "sabores/editar/:id", component: GerenciasaborComponent},
-      {path: "tipos", component: TiposComponent},
-      {path: "tipos/novo", component: GerenciatipoComponent},
-      {path: "tipos/editar/:id", component: GerenciatipoComponent},
-      {path: "produtos", component: ProdutosComponent},
-      {path: "produtos/novo", component: GerenciaprodutoComponent},
-      {path: "produtos/editar/:id", component: GerenciaprodutoComponent}
+      {path: "tipoDePizza", component: TipopizzalistComponent }
     ]},
   { path: "user", component: IndexComponent, children:[
     {path: "menu", component: MenupedidoComponent},
