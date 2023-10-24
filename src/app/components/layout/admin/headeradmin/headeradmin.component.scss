@@ -1,0 +1,89 @@
+.container-fluid {
+  background-color: #3E88F6;
+  display: flex;
+  justify-content: space-around;
+  position: sticky;
+  align-items: center;
+
+}
+
+.logo {
+  width: 35%;
+  text-align: center;
+  justify-content: center;
+}
+
+.bi {
+  width: 3.5%;
+  color: white;
+  fill: white;
+}
+
+.modal-body {
+  width: 20vw;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.disbaled {
+  display: none;
+}
+
+h6 {
+  font-family: kdammthmor, sans-serif;
+  font-size: small;
+  color: white;
+}
+
+.ajuste {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+
+.organiza_botoes {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 100vw;
+  background-color: white;
+}
+
+.btn {
+  color: #fff;
+  font-size: 40%;
+  background-color: #3d87f6;
+  opacity: 0.60;
+  border: none;
+  font-family: kdammthmor, sans-serif;
+  max-width: 350px;
+  margin-bottom: 1%;
+  margin-top: 1%;
+
+
+}
+
+.btn:hover {
+  background: #3d87f6;
+  opacity: 1;
+}
+
+.success {
+  background-color: forestgreen;
+  opacity: 0.75;
+  border: none;
+  font-family: kdammthmor, sans-serif;
+
+  box-shadow: #a3a1a1 -2px 2px 10px 1px;
+
+}
+
+.success:hover {
+  background-color: green;
+  opacity: 1;
+
+}

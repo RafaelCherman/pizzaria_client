@@ -1,0 +1,43 @@
+th{
+  background-color: #0d6efd;
+  color: white;
+  font-family: "Londrina Solid-Regular", sans-serif;
+  font-size: 50%;
+
+}
+
+td{
+  font-family: kdammthmor, sans-serif, sans-serif;
+  font-size: 40%;
+  text-align: center;
+
+}
+
+button{
+  font-family: "Londrina Solid-Regular", sans-serif;
+  font-size: 40%;
+
+
+}
+
+.organiza_itens{
+display: flex;
+  width: 75vw;
+ margin: auto;
+}
+
+.accion{
+  font-size: 75%;
+  margin-right: 3%;
+}
+
+.success{
+  background-color: forestgreen;
+  opacity: 0.75;
+  border: none;
+  font-family: kdammthmor, sans-serif;
+  max-width: 100%;
+  min-width: 75px;
+  box-shadow: #a3a1a1 -2px 2px 10px 1px;
+
+}

@@ -16,7 +16,10 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { PedidopreencherenderecoComponent } from './components/pedido/pedidopreencherendereco/pedidopreencherendereco.component';
 import { SidemenuComponent } from './components/layout/sidemenu/sidemenu.component';
-import { IndexadminComponent } from './components/layout/indexadmin/indexadmin.component';
+import { IndexadminComponent } from './components/layout/admin/indexadmin/indexadmin.component';
+import { MenuadminComponent } from './components/layout/admin/menuadmin/menuadmin.component';
+import { HeaderadminComponent } from './components/layout/admin/headeradmin/headeradmin.component';
+import { TipopizzalistComponent } from './components/layout/admin/tipopizzalist/tipopizzalist.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +36,9 @@ import { IndexadminComponent } from './components/layout/indexadmin/indexadmin.c
     PedidopreencherenderecoComponent,
     SidemenuComponent,
     IndexadminComponent,
+    MenuadminComponent,
+    HeaderadminComponent,
+    TipopizzalistComponent,
   ],
   imports: [
     BrowserModule,
