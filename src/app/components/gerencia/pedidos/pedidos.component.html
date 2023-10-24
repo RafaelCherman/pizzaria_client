@@ -14,13 +14,20 @@
 </div>
 
 <div *ngIf="selecionado == 'confirmar'">
-
+    
+    <app-exibepedido [situacao]="'AConfirmar'"></app-exibepedido>
+    
 </div>
 
 <div *ngIf="selecionado == 'andamento'">
     
+    <app-exibepedido [situacao]="'EmAndamento'"></app-exibepedido>
+
 </div>
 
 <div *ngIf="selecionado == 'finalizado'">
+
+    <app-exibepedido [situacao]="'Finalizado'"></app-exibepedido>
+
     
 </div>

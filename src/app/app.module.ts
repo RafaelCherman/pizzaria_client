@@ -18,6 +18,17 @@ import { PedidopreencherenderecoComponent } from './components/pedido/pedidopree
 import { SidemenuComponent } from './components/layout/sidemenu/sidemenu.component';
 import { IndexadminComponent } from './components/layout/indexadmin/indexadmin.component';
 import { PedidosComponent } from './components/gerencia/pedidos/pedidos.component';
+import { ExibepedidoComponent } from './components/gerencia/pedidos/exibepedido/exibepedido.component';
+import { GerenciapedidoComponent } from './components/gerencia/pedidos/gerenciapedido/gerenciapedido.component';
+import { SaboresComponent } from './components/gerencia/sabores/sabores.component';
+import { TiposComponent } from './components/gerencia/tipos/tipos.component';
+import { ProdutosComponent } from './components/gerencia/produtos/produtos.component';
+import { ExibetipoComponent } from './components/gerencia/tipos/exibetipo/exibetipo.component';
+import { GerenciatipoComponent } from './components/gerencia/tipos/gerenciatipo/gerenciatipo.component';
+import { ExibesaborComponent } from './components/gerencia/sabores/exibesabor/exibesabor.component';
+import { GerenciasaborComponent } from './components/gerencia/sabores/gerenciasabor/gerenciasabor.component';
+import { ExibeprodutoComponent } from './components/gerencia/produtos/exibeproduto/exibeproduto.component';
+import { GerenciaprodutoComponent } from './components/gerencia/produtos/gerenciaproduto/gerenciaproduto.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +46,17 @@ import { PedidosComponent } from './components/gerencia/pedidos/pedidos.componen
     SidemenuComponent,
     IndexadminComponent,
     PedidosComponent,
+    ExibepedidoComponent,
+    GerenciapedidoComponent,
+    SaboresComponent,
+    TiposComponent,
+    ProdutosComponent,
+    ExibetipoComponent,
+    GerenciatipoComponent,
+    ExibesaborComponent,
+    GerenciasaborComponent,
+    ExibeprodutoComponent,
+    GerenciaprodutoComponent,
   ],
   imports: [
     BrowserModule,
