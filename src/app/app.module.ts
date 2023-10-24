@@ -29,6 +29,7 @@ import { ExibesaborComponent } from './components/gerencia/sabores/exibesabor/ex
 import { GerenciasaborComponent } from './components/gerencia/sabores/gerenciasabor/gerenciasabor.component';
 import { ExibeprodutoComponent } from './components/gerencia/produtos/exibeproduto/exibeproduto.component';
 import { GerenciaprodutoComponent } from './components/gerencia/produtos/gerenciaproduto/gerenciaproduto.component';
+import { ClientecriarComponent } from './components/cliente/clientecriar/clientecriar.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { GerenciaprodutoComponent } from './components/gerencia/produtos/gerenci
     GerenciasaborComponent,
     ExibeprodutoComponent,
     GerenciaprodutoComponent,
+    ClientecriarComponent,
   ],
   imports: [
     BrowserModule,

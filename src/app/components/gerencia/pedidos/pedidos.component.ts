@@ -1,4 +1,6 @@
-import { Component, inject } from '@angular/core';
+import { Component, ViewChild, inject } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Cliente } from 'src/app/models/cliente';
 import { Pedido } from 'src/app/models/pedido';
 import { PedidoService } from 'src/app/services/pedido.service';
 
@@ -10,6 +12,9 @@ import { PedidoService } from 'src/app/services/pedido.service';
 export class PedidosComponent {
 
   pedidoService = inject(PedidoService);
+  modalService = inject(NgbModal);
+  cliente: Cliente = new Cliente();
+  @ViewChild('modal2') modal: any;
 
   
 
@@ -24,5 +29,21 @@ export class PedidosComponent {
     this.selecionado = selecionado;
   }
 
+  abrir(modal: any)
+  { 
+    this.modalService.open(modal, { size: 'lg' });
+  }
+
+  fechar(retorno: any)
+  {
+    if(retorno)
+    {
+      this.cliente = retorno;
+      this.abrir(this.modal);
+    }
+    else{
+      this.modalService.dismissAll();
+    }
+  }
   
 }
