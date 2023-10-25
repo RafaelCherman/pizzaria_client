@@ -22,7 +22,6 @@ export class GerenciasaborComponent {
   @Input() opcaoBotao: string = "";
   service = inject(SaborService);
   sabor: Sabor = new Sabor();
-  sabor: Sabor = new Sabor();
 
 /*
   roteador = inject(ActivatedRoute);
@@ -116,8 +115,6 @@ export class GerenciasaborComponent {
 
   cadastrar() {
     this.service.save(this.sabor).subscribe({
-      next: produto => {
-    this.service.save(this.sabor).subscribe({
       next: sabor => {
         this.mensagem = "Registro cadastrado com Sucesso";
         this.erro = false;
@@ -137,8 +134,6 @@ export class GerenciasaborComponent {
 
   editar() {
     this.service.edit( this.sabor.id, this.sabor).subscribe({
-      next: produto => {
-    this.service.edit( this.sabor.id, this.sabor).subscribe({
       next: sabor => {
         this.mensagem = "Registro editado com Sucesso";
         this.erro = false;
@@ -155,6 +150,7 @@ export class GerenciasaborComponent {
       }
     })
   }
+  
 
   voltar() {
 
@@ -164,7 +160,7 @@ export class GerenciasaborComponent {
 
   excluir() {
     this.service.delete(this.sabor.id).subscribe({
-      next: produto => {
+      next: sabor => {
     this.service.delete(this.sabor.id).subscribe({
       next: sabor => {
         this.mensagem = "Registro excluído com Sucesso";
@@ -180,6 +176,9 @@ export class GerenciasaborComponent {
         this.sucesso = false;
       }
     })
-
+   }
+  }) 
   }
+
+
 }
