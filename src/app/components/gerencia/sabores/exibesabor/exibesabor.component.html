@@ -54,7 +54,7 @@
         <tr class="" *ngFor="let sabor of lista">
           <td>{{sabor.id}}</td>
           <td>{{sabor.nome}}</td>
-          <td>{{sabor.ingrediente}}</td>
+          <td>{{sabor.ingredientes}}</td>
           <td>{{sabor.valor}}</td>
           <td>
             <button type="button" class="btn btn-primary accion" (click)="editar(content, sabor)">Editar</button>
@@ -74,7 +74,7 @@
         <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
       </div>
       <div class="modal-body">
-    <app-gerenciaproduto [objetoEnviado]="objeto" [opcaoBotao]="opcaoBotao" ></app-gerenciaproduto>
+    <app-gerenciasabor [objetoEnviado]="objeto" [opcaoBotao]="opcaoBotao" ></app-gerenciasabor>
       </div>
     
     </ng-template>
