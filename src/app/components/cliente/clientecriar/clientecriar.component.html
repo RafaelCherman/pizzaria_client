@@ -1,9 +1,9 @@
 
-<div class="row d-flex align-items-end">
-    <div class="offset-3 col-3"> 
+<div class="row">
+    <div class="offset-4 col-2"> 
         <p class="p-b" [ngClass]="{'selecionado' : (selecionado)}" (click)="escolher(true)">Escolher</p>
     </div>
-    <div class="col-3">
+    <div class="col-2">
         <p class="p-b" [ngClass]="{'selecionado' : (!selecionado)}" (click)="escolher(false)">Cadastrar</p>
     </div>
 </div>
@@ -13,37 +13,33 @@
         <div *ngIf="erro" class="alert alert-danger" role="alert">
             {{ mensagem }}
         </div>
-        <label for="cpf">Informe o CPF</label>
+        <label for="cpf">Informe o CPF do Cliente</label>
         <input type="text" class="form-control" id="cpf" [(ngModel)]="cpf">
-    </div>
-    <div class="row d-flex align-items-end">
-        <div class="offset-3 col-3">
-            <input type="button" class="btn btn-success" value="Buscar" (click)="buscar()" />
-        </div>
     </div>
 </div>
 
-<div *ngIf="!opcao" class="row d-flex justify-content-center">
-    <div class="col-5 form-group">
+<div *ngIf="!opcao" class="row d-flex flex-column align-items-center">
+    <div class="col-4 form-group">
         <label for="nome">Nome</label>
         <input [disabled]="selecionado" type="text" class="form-control" id="nome" [(ngModel)]="cliente.nome">
     </div>
-    <div class="col-5 form-group">
+    <div class="col-4 form-group">
         <label for="cpfCliente">CPF</label>
         <input [disabled]="selecionado" type="text" class="form-control" id="cpfCliente" [(ngModel)]="cliente.cpf">
     </div>
-    <div class="col-5 form-group">
+    <div class="col-4 form-group">
         <label for="telefone">Telefone</label>
         <input [disabled]="selecionado" type="text" class="form-control" id="telefone" [(ngModel)]="cliente.telCelular">
     </div>
 </div>
 
-<div class="row d-flex align-items-end">
-    <div class="offset-3 col-3">
-        <input type="button" class="btn btn-danger" value="Voltar" (click)="voltar()" />
+<div class="botoes row">
+    <div class="offset-4 col-2">
+        <input type="button" class="btn btn-danger" value="Cancelar" (click)="voltar()" />
     </div>
-    <div class="col-3"> 
-        <input  *ngIf="selecionado" (click)="finalizar()" type="button" class="btn btn-success" value="Selecionar"/>
+    <div class="col-2"> 
+        <input *ngIf="selecionado && opcao" type="button" class="btn btn-success" value="Buscar" (click)="buscar()" />
+        <input  *ngIf="selecionado && !opcao" (click)="finalizar()" type="button" class="btn btn-success" value="Selecionar"/>
         <input  *ngIf="!selecionado" (click)="finalizar()" type="button" class="btn btn-success" value="Cadastrar"/>
     </div>
 </div>
