@@ -78,6 +78,6 @@ export class GerenciapedidoComponent {
   }
 
   voltar(){
-    this.router.navigate(["/pedidos"]);
+    this.router.navigate(["admin/pedidos"]);
   }
 }

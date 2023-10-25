@@ -40,6 +40,6 @@ export class ExibepedidoComponent implements OnInit{
 
   gerenciar(id: number)
   {
-    this.router.navigate(['pedidos/editar/'+ id]);
+    this.router.navigate(['admin/pedidos/editar/'+ id]);
   }
 }
