@@ -10,7 +10,6 @@ import {PedidosComponent} from "./components/gerencia/pedidos/pedidos.component"
 import {GerenciapedidoComponent} from "./components/gerencia/pedidos/gerenciapedido/gerenciapedido.component";
 import {SaboresComponent} from "./components/gerencia/sabores/sabores.component";
 import {GerenciasaborComponent} from "./components/gerencia/sabores/gerenciasabor/gerenciasabor.component";
-import {TiposComponent} from "./components/gerencia/tipos/tipos.component";
 import {GerenciatipoComponent} from "./components/gerencia/tipos/gerenciatipo/gerenciatipo.component";
 import {ProdutosComponent} from "./components/gerencia/produtos/produtos.component";
 import {GerenciaprodutoComponent} from "./components/gerencia/produtos/gerenciaproduto/gerenciaproduto.component";
@@ -32,7 +31,7 @@ const routes: Routes = [
   {path: "sabores", component: SaboresComponent},
   {path: "sabores/novo", component: GerenciasaborComponent},
   {path: "sabores/editar/:id", component: GerenciasaborComponent},
-  {path: "tipos", component: TiposComponent},
+
   {path: "tipos/novo", component: GerenciatipoComponent},
   {path: "tipos/editar/:id", component: GerenciatipoComponent},
   {path: "produtos", component: ProdutosComponent},

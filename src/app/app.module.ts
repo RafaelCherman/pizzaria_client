@@ -25,7 +25,6 @@ import { PedidosComponent } from './components/gerencia/pedidos/pedidos.componen
 import { ExibepedidoComponent } from './components/gerencia/pedidos/exibepedido/exibepedido.component';
 import { GerenciapedidoComponent } from './components/gerencia/pedidos/gerenciapedido/gerenciapedido.component';
 import { SaboresComponent } from './components/gerencia/sabores/sabores.component';
-import { TiposComponent } from './components/gerencia/tipos/tipos.component';
 import { ProdutosComponent } from './components/gerencia/produtos/produtos.component';
 import { GerenciatipoComponent } from './components/gerencia/tipos/gerenciatipo/gerenciatipo.component';
 import { ExibesaborComponent } from './components/gerencia/sabores/exibesabor/exibesabor.component';
@@ -33,6 +32,9 @@ import { GerenciasaborComponent } from './components/gerencia/sabores/gerenciasa
 import { ExibeprodutoComponent } from './components/gerencia/produtos/exibeproduto/exibeproduto.component';
 import { GerenciaprodutoComponent } from './components/gerencia/produtos/gerenciaproduto/gerenciaproduto.component';
 import { ClientecriarComponent } from './components/cliente/clientecriar/clientecriar.component';
+import { ExibefuncionarioComponent } from './components/gerencia/funcionario/exibefuncionario/exibefuncionario.component';
+import { GerenciafuncionarioComponent } from './components/gerencia/funcionario/gerenciafuncionario/gerenciafuncionario.component' ;
+
 
 @NgModule({
   declarations: [
@@ -56,7 +58,7 @@ import { ClientecriarComponent } from './components/cliente/clientecriar/cliente
     ExibepedidoComponent,
     GerenciapedidoComponent,
     SaboresComponent,
-    TiposComponent,
+
     ProdutosComponent,
     GerenciatipoComponent,
     ExibesaborComponent,
@@ -64,6 +66,9 @@ import { ClientecriarComponent } from './components/cliente/clientecriar/cliente
     ExibeprodutoComponent,
     GerenciaprodutoComponent,
     ClientecriarComponent,
+    ExibefuncionarioComponent,
+    GerenciafuncionarioComponent,
+
   ],
   imports: [
     BrowserModule,

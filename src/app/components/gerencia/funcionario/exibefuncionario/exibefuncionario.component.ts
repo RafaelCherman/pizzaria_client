@@ -1,32 +1,29 @@
 import {Component, inject, Input} from '@angular/core';
-import {Pizzatipo} from "../../../../models/pizzatipo";
+import {Funcionario} from "../../../../models/funcionario";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
-import {Router} from "@angular/router";
-import {PizzatipoService} from "../../../../services/pizzatipo.service";
+import {FuncionarioService} from "../../../../services/funcionario.service";
 
 @Component({
-  selector: 'app-tipopizzalist',
-  templateUrl: './tipopizzalist.component.html',
-  styleUrls: ['./tipopizzalist.component.scss']
+  selector: 'app-exibefuncionario',
+  templateUrl: './exibefuncionario.component.html',
+  styleUrls: ['./exibefuncionario.component.scss']
 })
-export class TipopizzalistComponent {
-  lista: Pizzatipo[] = [];
-  objeto: Pizzatipo = new Pizzatipo();
+export class ExibefuncionarioComponent {
+  lista: Funcionario[] = [];
+  objeto: Funcionario = new Funcionario();
   modalService = inject(NgbModal);
   opcaoBotao: string = "Cadastrar";
-  router = inject(Router);
-  service = inject(PizzatipoService);
-  @Input() tipos: Pizzatipo[] = [];
+  service = inject(FuncionarioService);
+  @Input() funcionarios: Funcionario[] = [];
   @Input() gerencia: boolean = true;
 
-  constructor() {
+  cosntructor() {
     this.listar();
   }
 
   listar() {
     this.service.listAll().subscribe({
       next: lista => {
-
         this.lista = lista;
       },
       error: erro => {
@@ -34,28 +31,23 @@ export class TipopizzalistComponent {
         console.error(erro);
       }
     });
-
   }
 
-  editar(content: any, tipo: Pizzatipo) {
-    this.objeto = Object.assign({}, tipo);
+  editar(content: any, funcionario: Funcionario) {
+    this.objeto = Object.assign({}, funcionario);
     this.opcaoBotao = "Editar";
     this.modalService.open(content, {size: 'xl'})
   }
 
-  excluir(content: any, objeto: Pizzatipo) {
-    this.opcaoBotao= "Excluir";
+  excluir(content: any, objeto: Funcionario) {
+    this.opcaoBotao = "Excluir";
     this.objeto = Object.assign({}, objeto);
-    this.modalService.open(content,{size: 'xl'});
-
-
+    this.modalService.open(content, {size: 'xl'});
   }
-
 
   cadastrar(content: any) {
     this.opcaoBotao = "Cadastrar";
     this.modalService.open(content, {size: 'xl'})
   }
+
 }
-
-
