@@ -1,35 +1,37 @@
-<div class="row">
-    <div class="col-3">
-        <p (click)="selecionar('confirmar')" [ngClass]="{'selecionado' : (selecionado == 'confirmar')}" class="p-b">Pedidos em Espera</p>
+<section class="row">
+    <div class="row offset-2 col-8">
+        <div class="col-3">
+            <p (click)="selecionar('confirmar')" [ngClass]="{'selecionado' : (selecionado == 'confirmar')}" class="p-b">Pedidos em Espera</p>
+        </div>
+        <div class="col-3">
+            <p (click)="selecionar('andamento')" [ngClass]="{'selecionado' : (selecionado == 'andamento')}" class="p-b">Pedidos em Andamento</p>
+        </div>
+        <div class="col-3">
+            <p (click)="selecionar('finalizado')" [ngClass]="{'selecionado' : (selecionado == 'finalizado')}" class="p-b">Pedidos Finalizados</p>
+        </div>
+        <div class="col-3">
+            <input (click)="abrir(modal1)" type="button" class="btn btn-success" value="Adicionar Pedido" />
+        </div>
     </div>
-    <div class="col-3">
-        <p (click)="selecionar('andamento')" [ngClass]="{'selecionado' : (selecionado == 'andamento')}" class="p-b">Pedidos em Andamento</p>
+
+    <div class="offset-2 col-8" *ngIf="selecionado == 'confirmar'">
+        
+        <app-exibepedido [situacao]="'AConfirmar'"></app-exibepedido>
+        
     </div>
-    <div class="col-3">
-        <p (click)="selecionar('finalizado')" [ngClass]="{'selecionado' : (selecionado == 'finalizado')}" class="p-b">Pedidos Finalizados</p>
+
+    <div class="offset-2 col-8" *ngIf="selecionado == 'andamento'">
+
+        <app-exibepedido [situacao]="'EmAndamento'"></app-exibepedido>
+
     </div>
-    <div class="col-3">
-        <input (click)="abrir(modal1)" type="button" class="btn btn-success" value="Adicionar Pedido" />
+
+    <div class="offset-2 col-8" *ngIf="selecionado == 'finalizado'">
+
+        <app-exibepedido [situacao]="'Finalizado'"></app-exibepedido>
+
     </div>
-</div>
-
-<div *ngIf="selecionado == 'confirmar'">
-    
-    <app-exibepedido [situacao]="'AConfirmar'"></app-exibepedido>
-    
-</div>
-
-<div *ngIf="selecionado == 'andamento'">
-    
-    <app-exibepedido [situacao]="'EmAndamento'"></app-exibepedido>
-
-</div>
-
-<div *ngIf="selecionado == 'finalizado'">
-
-    <app-exibepedido [situacao]="'Finalizado'"></app-exibepedido>
-
-</div>
+</section>
 
 <ng-template #modal1 let-modal>
     <div class="modal-header">
