@@ -22,7 +22,7 @@ const routes: Routes = [
   {path: "menu", component: MenupedidoComponent},
   {path: "menulateral", component: SidemenuComponent},
   {path: "admin", component: IndexadminComponent, children: [
-      {path: "tipoDePizza", component: TipopizzalistComponent },
+      {path: "tipos", component: TipopizzalistComponent },
       {path: "sabores", component: ExibesaborComponent},
       {path: "produtos", component: ExibesaborComponent},
       {path: "pedidos", component: PedidosComponent},
