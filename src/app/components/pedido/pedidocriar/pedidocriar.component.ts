@@ -104,7 +104,6 @@ export class PedidocriarComponent {
       this.pedido.solicitaEntrega = this.entrega;
       this.pedido.cliente = this.cliente;
       this.pedido.situacaoPedido = "AConfirmar";
-      this.pedido.data = this.data.toLocaleDateString();
       console.log(this.pizzaList);
       console.log(this.produtoList);
       console.log(this.pedido);  
