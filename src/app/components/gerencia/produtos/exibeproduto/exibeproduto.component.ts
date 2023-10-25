@@ -40,7 +40,7 @@ export class ExibeprodutoComponent {
   }
 
   listar() {
-    this.service.listAll().subscribe({
+    this.service.listAtivo().subscribe({
       next: lista => {
         
         this.lista = lista;

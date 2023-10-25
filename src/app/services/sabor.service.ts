@@ -25,6 +25,10 @@ export class SaborService {
     return this.http.get<Sabor[]>(this.API + "/all");
   }
 
+  listAtivo(): Observable<Sabor[]> {
+    return this.http.get<Sabor[]>(this.API + "/ativo");
+  }
+
   save(sabor: Sabor): Observable<Sabor> {
     return this.http.post<Sabor>(this.API, sabor);
   }

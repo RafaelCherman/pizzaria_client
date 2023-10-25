@@ -25,6 +25,10 @@ export class PizzaService {
     return this.http.get<Pizza[]>(this.API + "/all");
   }
 
+  listAtivo(): Observable<Pizza[]> {
+    return this.http.get<Pizza[]>(this.API + "/ativo");
+  }
+
   save(pizza: Pizza): Observable<Pizza> {
     let valor: number = this.calculaValorPizza(pizza);
     pizza.valorPizza = valor;

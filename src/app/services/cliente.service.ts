@@ -31,6 +31,10 @@ export class ClienteService {
     return this.http.get<Cliente[]>(this.API + "/all");
   }
 
+  listAtivo(): Observable<Cliente[]> {
+    return this.http.get<Cliente[]>(this.API + "/ativo");
+  }
+
   save(cliente: Cliente): Observable<Cliente> {
     return this.http.post<Cliente>(this.API, cliente);
   }
