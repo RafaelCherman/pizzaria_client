@@ -20,13 +20,33 @@ export class ExibepedidoComponent implements OnInit{
   constructor(){}
 
   ngOnInit(): void {
-    this.listBySituacao(this.situacao);
-    
+  
+
+    if(this.situacao != 'Todos')
+    {
+      this.listBySituacao(this.situacao);
+    }
+    else
+    {
+      
+      this.listAll();
+    }
   }
 
-  listBySituacao(situacao: string): Pedido[]
+  listAll()
   {
-    let pedidos: Pedido[] = [];
+    this.pedidoService.listAll().subscribe({
+      next: lista=>{
+        this.pedidos = lista;
+      },
+      error: erro=>{
+        console.log(erro);
+      }
+    });
+  }
+
+  listBySituacao(situacao: string)
+  {
     this.pedidoService.listBySituacao(situacao).subscribe({
       next: lista=>{
         this.pedidos = lista;
@@ -35,7 +55,6 @@ export class ExibepedidoComponent implements OnInit{
         console.log(erro);
       }
     });
-    return pedidos;
   }
 
   gerenciar(id: number)

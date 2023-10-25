@@ -40,13 +40,17 @@
                     {{pedido.dataPedido}}
                 </td>
                 <td>
-                    {{pedido.situacaoPedido}}
+                    <a *ngIf="pedido.situacaoPedido == 'AConfirmar'">A Confirmar</a>
+                    <a *ngIf="pedido.situacaoPedido == 'EmAndamento'">Em Andamento</a>
+                    <a *ngIf="pedido.situacaoPedido == 'Finalizado'">Finalizado</a>
+                    <a *ngIf="pedido.situacaoPedido == 'Recusado'">Recusado</a>
                 </td>
                 <td>
                     R$ {{pedido.valorTotal}}
                 </td>
                 <td>
-                    <input type="button" class="btn btn-warning" value="Gerenciar" (click)="gerenciar(pedido.id)"/>
+                    <input *ngIf="!(pedido.situacaoPedido == 'Recusado')" type="button" class="btn btn-warning" value="Gerenciar" (click)="gerenciar(pedido.id)"/>
+                    <input *ngIf="pedido.situacaoPedido == 'Recusado'" type="button" class="btn btn-secondary" value="Visualizar" (click)="gerenciar(pedido.id)"/>
                 </td>
             </tr>
         </tbody>
