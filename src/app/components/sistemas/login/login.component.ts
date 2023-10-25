@@ -19,7 +19,7 @@ export class LoginComponent {
       this.roteador.navigate(['user/menu']);
     }
     else if (this.usuario.login == 'admin' && this.usuario.senha == 'admin') {
-      this.roteador.navigate(['pedidos']);
+      this.roteador.navigate(['admin']);
     }
     else
       alert('Login ou senha incorretos!');
