@@ -1,19 +1,19 @@
 <div class="image">
-    <img class="element-photoroom" src="../../../assets/imgBannerMenu.png" alt="nice Pizzas">
+    <img class="element-photoroom" src="../assets/banner-home_005%201%20(2).png" alt="nice Pizzas">
 </div>
 
 <div class="container">
     <div class="d-flex justify-content-around">
-       
+
         <div class="row text-center mt-5">
             <button type="button" class="btn custom-btn d-flex row align-items-center" (click)="abrir(modal1)">
-                <h3>Fazer Pedido</h3>
+                <h3 class="titulo">Fazer Pedido</h3>
                 <img src="../../../..//../assets/pedido4.png" height="150" >
             </button>
 
         </div>
-       
-       
+
+
     </div>
 </div>
 
@@ -26,7 +26,7 @@
         <h4 class="modal-title">Seu Pedido</h4>
     </div>
     <div class="modal-body">
-       
+
         <app-pedidocriar [cliente]="cliente" (retorno)="fechar($event)"></app-pedidocriar>
     </div>
 </ng-template>

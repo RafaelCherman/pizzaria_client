@@ -32,8 +32,10 @@
 
 
 <ng-template #content let-modal>
-  <div class="modal-header"><h4 class="modal-title" *ngIf="editar">Editar</h4>
-    <h4 class="modal-title" *ngIf="!editar">Cadastrar</h4>
+  <div class="modal-header">
+    <h4 class="modal-title" *ngIf="opcaoBotao =='Editar'">Editar</h4>
+    <h4 class="modal-title" *ngIf="opcaoBotao == 'Cadastrar'">Cadastrar</h4>
+    <h4 class="modal-title" *ngIf="opcaoBotao == 'Excluir'">Excluir</h4>
     <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
   </div>
   <div class="modal-body">
