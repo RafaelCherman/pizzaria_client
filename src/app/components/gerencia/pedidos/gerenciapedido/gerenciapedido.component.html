@@ -30,7 +30,7 @@
                     {{pedido.endereco.rua}}, {{pedido.endereco.nuEndereco}} - {{pedido.endereco.bairro}}
                 </td>
                 <td>
-                    {{pedido.data}}
+                    {{pedido.dataPedido}}
                 </td>
                 <td>
                     {{pedido.situacaoPedido}}
@@ -109,7 +109,7 @@
         </tbody>
     </table>
 </div>
-<div class="row">
+<div class="offset-2 col-8 row">
     <div class="offset-3 col-3">
         <input type="button" (click)="voltar()" class="btn btn-secondary" value="Voltar"/>
     </div>

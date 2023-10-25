@@ -15,7 +15,7 @@ export class Pedido {
     situacaoPedido!: string;
     valorTotal!: number;
     formaPagamento!: string;
-    data!: string;
+    dataPedido!: string;
     pizzas!: Pizza[];
     produtos!: Produtodiverso[];
 }

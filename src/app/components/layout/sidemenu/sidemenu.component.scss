@@ -1,10 +1,11 @@
 .card{
   max-width: 30vw;
+  border-radius: 0;
 
-  height: 80vh;
+  height: 85vh;
   border-color: #3d87f6;
   position: absolute;
-  top: 65px;
+  top: 10vh;
   padding: 10px;
   display: flex;
   justify-content: space-between;

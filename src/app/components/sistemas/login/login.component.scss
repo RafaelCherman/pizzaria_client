@@ -9,7 +9,7 @@ body{
 
 
 #login-row #form-login{
-    width: 60vw;
+    width: 40vw;
     flex-direction: column;
     align-items: center;
 }
@@ -19,28 +19,43 @@ body{
 }
 
 .element-photoroom{
-    width: 15vw;
+    width: 10vw;
 }
 
 h1{
     top: 0;
     left: 0;
-    font-family: "Kaushan Script-Regular", Helvetica;
+    font-family: "Kaushan Script", sans-serif ;
     font-weight: 400;
     color: #ffffff;
-    font-size: 7vw;
+    font-size: 4vw;
+}
+
+.text-center{
+  font-family: "Kaushan Script-Regular", sans-serif;
+}
+
+.btn{
+  font-family: kdammthmor, sans-serif;
+  font-size: 1.1vw;
+  width: 8vw;
+  border-radius: 8px;
+  box-shadow: #6c757d 0px 2px 10px 1px;
+
 }
 
 .btn-custom {
     color: black;
-    width: 8vw;
+
     top: 0;
     left: 0;
     background-color: #fafcff;
-    border-radius: 12px;
+}
+.form-control{
+  font-family: kdammthmor, sans-serif;
+    font-size: 1vw;
+    width: 22vw;
+    border-radius: 8px;
+    box-shadow: #6c757d 0px 2px 10px 1px;
 }
 
-.btn-success{
-    width: 8vw;
-    border-radius: 12px;
-}

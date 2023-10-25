@@ -18,7 +18,7 @@ export class PedidosComponent {
 
   
 
-  selecionado: string = "confirmar";
+  selecionado: string = "todos";
 
   constructor(){
     

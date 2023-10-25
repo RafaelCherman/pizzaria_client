@@ -1,3 +1,4 @@
+<!--
 <div>
     <table class="table table-bordered">
         <thead>
@@ -33,4 +34,48 @@
             </tr>
         </tbody>
     </table>
-</div>
+</div>-->
+
+<section class="organiza_itens">
+
+    <table class="table table-hover">
+    
+    <thead>
+    <button type="button" class="btn btn-primary success" (click)="cadastrar(content)">Cadastrar novo</button>
+        <tr>
+          <th scope="col">Cod.</th>
+          <th scope="col">Nome</th>
+          <th scope="col">Tipo</th>
+          <th scope="col">Valor</th>
+          <th scope="col">Ações</th>
+        </tr>
+    </thead>
+      <tbody>
+        <tr class="" *ngFor="let sabor of lista">
+          <td>{{sabor.id}}</td>
+          <td>{{sabor.nome}}</td>
+          <td>{{sabor.ingredientes}}</td>
+          <td>{{sabor.valor}}</td>
+          <td>
+            <button type="button" class="btn btn-primary accion" (click)="editar(content, sabor)">Editar</button>
+            <button type="button" class="btn btn-danger accion" (click)="excluir(content, sabor)">Excluir</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    </section>
+    
+    
+    <ng-template #content let-modal>
+      <div class="modal-header">
+        <h4 class="modal-title" *ngIf="opcaoBotao =='Editar'">Editar</h4>
+        <h4 class="modal-title" *ngIf="opcaoBotao == 'Cadastrar'">Cadastrar</h4>
+        <h4 class="modal-title" *ngIf="opcaoBotao == 'Excluir'">Excluir</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+      </div>
+      <div class="modal-body">
+    <app-gerenciasabor [objetoEnviado]="objeto" [opcaoBotao]="opcaoBotao" ></app-gerenciasabor>
+      </div>
+    
+    </ng-template>
+    

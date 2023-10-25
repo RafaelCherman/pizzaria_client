@@ -24,11 +24,11 @@
     </div>
 </div>
 
-<div class="row">
+<div class="row organiza_botoes">
     <div class="offset-3 col-3">
         <input type="button" class="btn btn-secondary" value="Voltar" (click)="voltar()" />
     </div>
-    <div class="col-3">
+    <div class="col-3 ">
         <input *ngIf="opcaoBotao=='Editar'" class="btn btn-warning" value="Editar" (click)="editar()"/>
         <input *ngIf="opcaoBotao=='Cadastrar'" class="btn btn-success" value="Cadastrar" (click)="cadastrar()" />
       <input *ngIf="opcaoBotao=='Excluir'" class="btn btn-danger" value="Excluir" (click)="excluir()" />

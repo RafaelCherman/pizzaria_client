@@ -27,6 +27,10 @@ export class EnderecoService {
     return this.http.get<Endereco[]>(this.API + "/all");
   }
 
+  listAtivo(): Observable<Endereco[]> {
+    return this.http.get<Endereco[]>(this.API + "/ativo");
+  }
+
   listByCliente(id: number): Observable<Endereco[]> {
     let params = new HttpParams()
       .set('id', id)

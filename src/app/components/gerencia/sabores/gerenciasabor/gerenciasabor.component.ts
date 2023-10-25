@@ -1,7 +1,9 @@
-import { Component, inject } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, Input, inject } from '@angular/core';
+import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Sabor } from 'src/app/models/sabor';
 import { SaborService } from 'src/app/services/sabor.service';
+import { ExibesaborComponent } from '../exibesabor/exibesabor.component';
 
 @Component({
   selector: 'app-gerenciasabor',
@@ -10,6 +12,18 @@ import { SaborService } from 'src/app/services/sabor.service';
 })
 export class GerenciasaborComponent {
 
+  router = inject(Router);
+  modalService = inject(NgbModal);
+  mensagem!: string;
+  erro: boolean = false;
+  sucesso: boolean = false;
+  lista = inject(ExibesaborComponent)
+  @Input() objetoEnviado: Sabor = new Sabor();
+  @Input() opcaoBotao: string = "";
+  service = inject(SaborService);
+  sabor: Sabor = new Sabor();
+
+/*
   roteador = inject(ActivatedRoute);
   router = inject(Router);
 
@@ -88,5 +102,83 @@ export class GerenciasaborComponent {
   {
     this.router.navigate(['/sabores'])
   }
+*/
+
+  
+
+  constructor() {  }
+
+  ngOnInit(): void {
+    this.sabor = this.objetoEnviado;
+    this.sabor = this.objetoEnviado;
+ }
+
+  cadastrar() {
+    this.service.save(this.sabor).subscribe({
+      next: sabor => {
+        this.mensagem = "Registro cadastrado com Sucesso";
+        this.erro = false;
+        this.sucesso = true;
+        this.modalService.dismissAll();
+        this.lista.listar()
+      },
+      error: erro => {
+        console.log(erro);
+        this.mensagem = "Houve algum erro";
+        this.erro = true;
+        this.sucesso = false;
+
+      }
+    })
+  }
+
+  editar() {
+    this.service.edit( this.sabor.id, this.sabor).subscribe({
+      next: sabor => {
+        this.mensagem = "Registro editado com Sucesso";
+        this.erro = false;
+        this.sucesso = true;
+        this.lista.listar();
+        this.modalService.dismissAll();
+      },
+      error: erro => {
+        console.log(erro);
+        this.mensagem = "Houve algum erro";
+        this.erro = true;
+
+        this.sucesso = false;
+      }
+    })
+  }
+  
+
+  voltar() {
+
+    this.modalService.dismissAll();
+
+  }
+
+  excluir() {
+    this.service.delete(this.sabor.id).subscribe({
+      next: sabor => {
+    this.service.delete(this.sabor.id).subscribe({
+      next: sabor => {
+        this.mensagem = "Registro excluído com Sucesso";
+        this.erro = false;
+        this.sucesso = true;
+        this.lista.listar();
+        this.modalService.dismissAll();
+      },
+      error: erro => {
+        console.log(erro);
+        this.mensagem = "Houve algum erro";
+        this.erro = true;
+        this.sucesso = false;
+      }
+    })
+   }
+  }) 
+  }
+
 
 }

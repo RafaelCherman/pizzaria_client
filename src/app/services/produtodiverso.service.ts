@@ -25,6 +25,10 @@ export class ProdutodiversoService {
     return this.http.get<Produtodiverso[]>(this.API + "/all");
   }
 
+  listAtivo(): Observable<Produtodiverso[]> {
+    return this.http.get<Produtodiverso[]>(this.API + "/ativo");
+  }
+
   save(produto: Produtodiverso): Observable<Produtodiverso> {
     return this.http.post<Produtodiverso>(this.API, produto);
   }

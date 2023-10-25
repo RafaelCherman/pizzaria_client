@@ -1,13 +1,16 @@
 <section class="row">
     <div class="row offset-2 col-8">
-        <div class="col-3">
-            <p (click)="selecionar('confirmar')" [ngClass]="{'selecionado' : (selecionado == 'confirmar')}" class="p-b">Pedidos em Espera</p>
+        <div class="offset-2 col-1">
+            <p (click)="selecionar('todos')" [ngClass]="{'selecionado' : (selecionado == 'todos')}" class="p-b">Todos</p>
         </div>
-        <div class="col-3">
-            <p (click)="selecionar('andamento')" [ngClass]="{'selecionado' : (selecionado == 'andamento')}" class="p-b">Pedidos em Andamento</p>
+        <div class="col-2">
+            <p (click)="selecionar('confirmar')" [ngClass]="{'selecionado' : (selecionado == 'confirmar')}" class="p-b">Em Espera</p>
         </div>
-        <div class="col-3">
-            <p (click)="selecionar('finalizado')" [ngClass]="{'selecionado' : (selecionado == 'finalizado')}" class="p-b">Pedidos Finalizados</p>
+        <div class="col-2">
+            <p (click)="selecionar('andamento')" [ngClass]="{'selecionado' : (selecionado == 'andamento')}" class="p-b">Em Andamento</p>
+        </div>
+        <div class="col-2">
+            <p (click)="selecionar('finalizado')" [ngClass]="{'selecionado' : (selecionado == 'finalizado')}" class="p-b">Finalizados</p>
         </div>
         <div class="col-3">
             <input (click)="abrir(modal1)" type="button" class="btn btn-success" value="Adicionar Pedido" />
@@ -29,6 +32,12 @@
     <div class="offset-2 col-8" *ngIf="selecionado == 'finalizado'">
 
         <app-exibepedido [situacao]="'Finalizado'"></app-exibepedido>
+
+    </div>
+    
+    <div class="offset-2 col-8" *ngIf="selecionado == 'todos'">
+
+        <app-exibepedido [situacao]="'Todos'"></app-exibepedido>
 
     </div>
 </section>

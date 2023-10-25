@@ -26,9 +26,13 @@ export class PedidoService {
     return this.http.get<Pedido[]>(this.API + "/all");
   }
 
+  listAtivo(): Observable<Pedido[]> {
+    return this.http.get<Pedido[]>(this.API + "/ativo");
+  }
+
   listBySituacao(s: string): Observable<Pedido[]> {
     let params = new HttpParams()
-      .set('s', s)
+      .set('s', s);
     return this.http.get<Pedido[]>(this.API + "/situacao", {params: params});
   }
 

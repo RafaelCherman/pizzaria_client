@@ -25,6 +25,10 @@ export class PizzatipoService {
     return this.http.get<Pizzatipo[]>(this.API + "/all");
   }
 
+  listAtivo(): Observable<Pizzatipo[]> {
+    return this.http.get<Pizzatipo[]>(this.API + "/ativo");
+  }
+
   save(pizzaTipo: Pizzatipo): Observable<|Pizzatipo> {
     return this.http.post<Pizzatipo>(this.API, pizzaTipo);
   }
