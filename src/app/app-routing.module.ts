@@ -15,6 +15,7 @@ import {GerenciatipoComponent} from "./components/gerencia/tipos/gerenciatipo/ge
 import {ProdutosComponent} from "./components/gerencia/produtos/produtos.component";
 import {GerenciaprodutoComponent} from "./components/gerencia/produtos/gerenciaproduto/gerenciaproduto.component";
 import { ExibesaborComponent } from './components/gerencia/sabores/exibesabor/exibesabor.component';
+import { ExibeprodutoComponent } from './components/gerencia/produtos/exibeproduto/exibeproduto.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "login", pathMatch: 'full'},
@@ -24,7 +25,7 @@ const routes: Routes = [
   {path: "admin", component: IndexadminComponent, children: [
       {path: "tipos", component: TipopizzalistComponent },
       {path: "sabores", component: ExibesaborComponent},
-      {path: "produtos", component: ExibesaborComponent},
+      {path: "produtos", component: ExibeprodutoComponent},
       {path: "pedidos", component: PedidosComponent},
       {path: "pedidos/editar/:id", component: GerenciapedidoComponent},
       

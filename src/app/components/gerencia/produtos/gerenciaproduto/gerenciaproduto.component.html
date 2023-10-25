@@ -1,4 +1,4 @@
-<div *ngIf="erro" class="alert alert-danger" role="alert">
+<!--<div *ngIf="erro" class="alert alert-danger" role="alert">
     {{ mensagem }}
 </div>
 <div *ngIf="sucesso" class="alert alert-success" role="alert">
@@ -27,5 +27,40 @@
     <div class="col-3">
         <input *ngIf="edicao" class="btn btn-warning" value="Editar" (click)="editar()"/>
         <input *ngIf="!edicao" class="btn btn-success" value="Cadastrar" (click)="cadastrar()" />
+    </div>
+</div>-->
+
+
+<div *ngIf="erro" class="alert alert-danger" role="alert">
+    {{ mensagem }}
+</div>
+<div *ngIf="sucesso" class="alert alert-success" role="alert">
+    {{ mensagem }}
+</div>
+
+<div class="row d-flex justify-content-center">
+    <div class="col-5 form-group">
+        <label for="nome">Nome</label>
+        <input [disabled]="opcaoBotao=='Excluir'" type="text" class="form-control" id="nome" [(ngModel)]="produto.nome">
+    </div>
+    <div class="col-5 form-group">
+        <label for="tipo">Tipo</label>
+        <input [disabled]="opcaoBotao=='Excluir'" type="text" class="form-control" id="tipo" [(ngModel)]="produto.tipo">
+    </div>
+    <div class="col-5 form-group">
+        <label for="valor">Valor</label>
+        <input [disabled]="opcaoBotao=='Excluir'" type="number" class="form-control" id="valor" [(ngModel)]="produto.preco">
+    </div>
+</div>
+
+<div class="row organiza_botoes">
+    <div class="offset-3 col-3">
+        <input type="button" class="btn btn-secondary" value="Voltar" (click)="voltar()" />
+    </div>
+    <div class="col-3 ">
+        <input *ngIf="opcaoBotao=='Editar'" class="btn btn-warning" value="Editar" (click)="editar()"/>
+        <input *ngIf="opcaoBotao=='Cadastrar'" class="btn btn-success" value="Cadastrar" (click)="cadastrar()" />
+      <input *ngIf="opcaoBotao=='Excluir'" class="btn btn-danger" value="Excluir" (click)="excluir()" />
+
     </div>
 </div>
