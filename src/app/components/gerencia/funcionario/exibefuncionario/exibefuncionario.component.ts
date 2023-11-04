@@ -17,17 +17,18 @@ export class ExibefuncionarioComponent {
   @Input() funcionarios: Funcionario[] = [];
   @Input() gerencia: boolean = true;
 
-  cosntructor() {
+
+  constructor() {
     this.listar();
   }
 
   listar() {
-    this.service.listAll().subscribe({
+    this.service.listAtivo().subscribe({
       next: lista => {
         this.lista = lista;
       },
       error: erro => {
-        alert('Exemplo de tratamento de erro/exception! Observe o erro no console!');
+        this.lista = [];
         console.error(erro);
       }
     });
@@ -46,6 +47,8 @@ export class ExibefuncionarioComponent {
   }
 
   cadastrar(content: any) {
+    this.objeto= new Funcionario();
+
     this.opcaoBotao = "Cadastrar";
     this.modalService.open(content, {size: 'xl'})
   }

@@ -47,12 +47,11 @@ export class TipopizzalistComponent {
     this.opcaoBotao= "Excluir";
     this.objeto = Object.assign({}, objeto);
     this.modalService.open(content,{size: 'xl'});
-
-
   }
 
 
   cadastrar(content: any) {
+    this.objeto = new Pizzatipo();
     this.opcaoBotao = "Cadastrar";
     this.modalService.open(content, {size: 'xl'})
   }

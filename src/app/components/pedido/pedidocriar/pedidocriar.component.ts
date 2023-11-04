@@ -30,7 +30,8 @@ export class PedidocriarComponent {
   modalService = inject(NgbModal);
   modalRef!: NgbModalRef;
 
-  
+
+
 
   constructor(){}
 
@@ -95,7 +96,7 @@ export class PedidocriarComponent {
 
   finalizaPedido(modal: any)
   {
-    
+
     if(this.pizzaList.length > 0 || this.produtoList.length > 0)
     {
       this.pedido.pizzas = this.pizzaList;
@@ -106,7 +107,7 @@ export class PedidocriarComponent {
       this.pedido.situacaoPedido = "AConfirmar";
       console.log(this.pizzaList);
       console.log(this.produtoList);
-      console.log(this.pedido);  
+      console.log(this.pedido);
       if(this.entrega)
       {
         this.abrirModal(modal);

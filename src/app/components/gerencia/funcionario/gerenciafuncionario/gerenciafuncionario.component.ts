@@ -40,11 +40,14 @@ export class GerenciafuncionarioComponent implements OnInit{
         console.log(erro);
         this.mensagem = "Houve algum erro";
         this.erro = true;
+
         this.sucesso = false;
 
       }
     });
   }
+
+
 
   editar() {
     this.service.edit(this.tipo.id, this.tipo).subscribe({
@@ -72,7 +75,7 @@ export class GerenciafuncionarioComponent implements OnInit{
         this.erro = false;
         this.sucesso = true;
         this.modelService.dismissAll();
-        this.lista.listar()
+        this.lista.listar();
       },
       error: erro => {
         console.log(erro);

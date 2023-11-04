@@ -1,10 +1,11 @@
+
 <div *ngIf="erro" class="alert alert-danger" role="alert">
   {{ mensagem }}
 </div>
 <div *ngIf="sucesso" class="alert alert-success" role="alert">
   {{ mensagem }}
 </div>
-
+<section class="organize">
 <div class="row d-flex justify-content-center">
   <div class="col-5 form-group">
     <label for="nome">Nome</label>
@@ -15,14 +16,13 @@
     <input [disabled]="opcaoBotao=='Excluir'" type="text" class="form-control" id="tamanho" [(ngModel)]="tipo.cpf">
   </div>
   <div class="col-5 form-group">
-    <select class="form-select" aria-label="Default select example" [disabled]="opcaoBotao=='Excluir'" [(ngModel)]="tipo.funcao">
-      <option selected>Função</option>
-      <option value="1">Administrador</option>
-      <option value="2">Atendente</option>
-      <option value="3">Entregador</option>
+    <select class="form-select" aria-label="Selecione"  [disabled]="opcaoBotao=='Excluir'" [(ngModel)]="tipo.funcao">
+
+      <option value="Administrador">Administrador</option>
+      <option value="Atendente">Atendente</option>
+      <option value="Entregador">Entregador</option>
     </select>
-    <label for="valor">Valor</label>
-    <input [disabled]="opcaoBotao=='Excluir'" type="number" class="form-control" id="valor" [(ngModel)]="tipo.funcao">
+
   </div>
 
 </div>
@@ -38,3 +38,4 @@
 
   </div>
 </div>
+</section>

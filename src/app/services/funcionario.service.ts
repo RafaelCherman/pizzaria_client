@@ -3,6 +3,7 @@ import {Observable} from "rxjs";
 import {Pizza} from "../models/pizza";
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {Funcionario} from "../models/funcionario";
+import {Pedido} from "../models/pedido";
 
 @Injectable({
   providedIn: 'root'
@@ -38,6 +39,10 @@ export class FuncionarioService {
       .set('id', id)
 
     return this.http.delete<Funcionario>(this.API, {params: params});
+  }
+
+  listAtivo(): Observable<Funcionario[]> {
+    return this.http.get<Funcionario[]>(this.API + "/ativo");
   }
 
 }
