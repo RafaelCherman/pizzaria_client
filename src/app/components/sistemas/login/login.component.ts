@@ -47,7 +47,7 @@ export class LoginComponent {
       next: user => { // QUANDO DÁ CERTO
         console.log(user);
         this.loginService.addToken(user.token);
-        this.roteador.navigate(['admin/produtos']);
+        this.roteador.navigate(['user/menu']);
       },
       error: erro => { // QUANDO DÁ ERRO
         alert('Exemplo de tratamento de erro/exception! Observe o erro no console!');
@@ -61,8 +61,14 @@ export class LoginComponent {
     //implementar a requisição aqui e colocar o token no localstorage
 
     if (this.login.login == 'admin' && this.login.senha == 'admin')
-      this.roteador.navigate(['admin/produtos']);
+      this.roteador.navigate(['admin']);
     else
       alert('login ou senha incorretos');
+  }
+
+  limpar(){
+    this.login.login = '';
+    this.login.senha = '';
+
   }
 }
