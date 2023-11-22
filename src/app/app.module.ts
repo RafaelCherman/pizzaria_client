@@ -33,6 +33,7 @@ import { GerenciasaborComponent } from './components/gerencia/sabores/gerenciasa
 import { ExibeprodutoComponent } from './components/gerencia/produtos/exibeproduto/exibeproduto.component';
 import { GerenciaprodutoComponent } from './components/gerencia/produtos/gerenciaproduto/gerenciaproduto.component';
 import { ClientecriarComponent } from './components/cliente/clientecriar/clientecriar.component';
+import { httpInterceptorProviders } from './interceptors/httpinterceptor.service';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,9 @@ import { ClientecriarComponent } from './components/cliente/clientecriar/cliente
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    httpInterceptorProviders
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
