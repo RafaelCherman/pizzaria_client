@@ -19,9 +19,9 @@ button{
 }
 
 .organiza_itens{
-display: flex;
+  display: flex;
   width: 75vw;
- margin: auto;
+  margin: auto;
 }
 
 .accion{
@@ -40,8 +40,4 @@ display: flex;
   box-shadow: #a3a1a1 -2px 2px 10px 1px;
   margin: 10%;
 
-}
-
-.modal-header{
-  font-family: "Londrina Solid-Regular", sans-serif;
 }

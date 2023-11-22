@@ -26,9 +26,7 @@ export class TipopizzalistComponent {
   listar() {
     this.service.listAll().subscribe({
       next: lista => {
-        for (const listaKey in lista) {
 
-        }
         this.lista = lista;
       },
       error: erro => {
@@ -40,12 +38,8 @@ export class TipopizzalistComponent {
   }
 
   editar(content: any, tipo: Pizzatipo) {
-
-
     this.objeto = Object.assign({}, tipo);
     this.opcaoBotao = "Editar";
-
-
     this.modalService.open(content, {size: 'xl'})
   }
 
@@ -53,12 +47,11 @@ export class TipopizzalistComponent {
     this.opcaoBotao= "Excluir";
     this.objeto = Object.assign({}, objeto);
     this.modalService.open(content,{size: 'xl'});
-
-
   }
 
 
   cadastrar(content: any) {
+    this.objeto = new Pizzatipo();
     this.opcaoBotao = "Cadastrar";
     this.modalService.open(content, {size: 'xl'})
   }

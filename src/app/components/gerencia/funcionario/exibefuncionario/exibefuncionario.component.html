@@ -1,0 +1,42 @@
+
+<section class="organiza_itens">
+
+  <table class="table table-hover">
+
+    <thead>
+    <button type="button" class="btn btn-primary success" (click)="cadastrar(content)">Cadastrar novo</button>
+    <tr>
+      <th scope="col">Cod.</th>
+      <th scope="col">Nome</th>
+      <th scope="col">CPF</th>
+      <th scope="col">FUNÇÃO</th>
+      <th scope="col">Ações</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="" *ngFor="let valor of lista">
+      <td>{{valor.id}}</td>
+      <td>{{valor.nome}}</td>
+      <td>{{valor.cpf}}</td>
+      <td>{{valor.funcao}}</td>
+      <td>
+        <button type="button" class="btn btn-primary accion" (click)="editar(content, valor)">Editar</button>
+        <button type="button" class="btn btn-danger accion" (click)="excluir(content, valor)">Excluir</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</section>
+
+
+<ng-template #content let-modal>
+  <div class="modal-header"><h4 class="modal-title" *ngIf="editar">Editar</h4>
+    <h4 class="modal-title" *ngIf="!editar">Cadastrar</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <app-gerenciafuncionario [objetoEnviado]="objeto" [opcaoBotao]="opcaoBotao" ></app-gerenciafuncionario>
+  </div>
+
+</ng-template>
+
