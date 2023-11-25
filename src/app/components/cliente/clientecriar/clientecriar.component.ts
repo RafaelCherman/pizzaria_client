@@ -1,16 +1,22 @@
-import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, inject } from '@angular/core';
 import { Cliente } from 'src/app/models/cliente';
+import { Dadoscliente } from 'src/app/models/dadoscliente';
+import { Usuario } from 'src/app/models/usuario';
 import { ClienteService } from 'src/app/services/cliente.service';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-clientecriar',
   templateUrl: './clientecriar.component.html',
   styleUrls: ['./clientecriar.component.scss']
 })
-export class ClientecriarComponent {
+export class ClientecriarComponent implements OnInit{
 
   clienteService = inject(ClienteService);
+  loginService = inject(LoginService)
   cliente: Cliente = new Cliente();
+  login: Usuario = new Usuario();
+
 
 
   @Output() retorno = new EventEmitter<any>();
@@ -24,6 +30,10 @@ export class ClientecriarComponent {
   cpf: string = "";
 
   constructor() {}
+  
+  ngOnInit(): void {
+    this.selecionado = !this.user;
+  }
 
   finalizar()
   {
@@ -31,7 +41,24 @@ export class ClientecriarComponent {
     {
       this.clienteService.save(this.cliente).subscribe({
         next: cliente =>{
-          this.retorno.emit(cliente);
+          let dados: Dadoscliente = new Dadoscliente();
+          this.login.login = cliente.cpf;
+
+          dados.cliente = cliente;
+          dados.login = this.login;
+
+          this.loginService.cadastrar(dados).subscribe({
+            next: usuario =>{
+              if(this.user)
+              {
+                this.retorno.emit(usuario.username);
+              }
+              else
+              {
+                this.retorno.emit(cliente);
+              }
+            }
+          });
         },
         error: erro =>
         {

@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Usuario } from 'src/app/models/usuario';
 import { LoginService } from 'src/app/services/login.service';
 
@@ -32,6 +33,7 @@ export class LoginComponent {
 
   }*/
 
+  modalService = inject(NgbModal);
   login: Usuario = new Usuario();
   roteador = inject(Router);
   loginService = inject(LoginService);
@@ -60,6 +62,21 @@ export class LoginComponent {
         console.error(erro);
       }
     });
+  }
+
+  cadastrar(modal: any){
+    this.modalService.open(modal, { size: 'lg' });
+  }
+
+  fechar(retorno: any)
+  {
+    if(retorno)
+    {
+      console.log(retorno);
+      this.login.login = retorno;
+    }
+    this.modalService.dismissAll();
+    
   }
 
   limpar(){

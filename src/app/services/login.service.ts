@@ -4,6 +4,8 @@ import { Usuario } from '../models/usuario';
 import { Observable } from 'rxjs';
 import { User } from '../models/user';
 import { jwtDecode } from 'jwt-decode';
+import { Cliente } from '../models/cliente';
+import { Dadoscliente } from '../models/dadoscliente';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +20,11 @@ export class LoginService {
 
   logar(login: Usuario): Observable<User> {
     return this.http.post<User>(this.API, login);
+  }
+
+  cadastrar(dados: Dadoscliente): Observable<User>
+  {
+    return this.http.post<User>(this.API + '/create', dados);
   }
 
   deslogar(): Observable<any> {
