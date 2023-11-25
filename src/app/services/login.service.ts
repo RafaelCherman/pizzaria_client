@@ -44,7 +44,7 @@ export class LoginService {
     }
   }
 
-  getClientID(token: string): number{
+  getClientID(token: any): number{
     let decodedToken: any = jwtDecode(token);
     console.log(decodedToken);
     if(decodedToken.cliente_id)
