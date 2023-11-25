@@ -3,6 +3,7 @@ import { Injectable, inject } from '@angular/core';
 import { Usuario } from '../models/usuario';
 import { Observable } from 'rxjs';
 import { User } from '../models/user';
+import { jwtDecode } from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,29 @@ export class LoginService {
 
   deslogar(): Observable<any> {
     return this.http.get<any>(this.API+'/deslogar');
+  }
+
+  hasPermission(token: string): boolean{
+    let decodedToken: any = jwtDecode(token);
+    console.log(decodedToken);
+    if(decodedToken.role == 'ADMIN')
+    {
+      return true;
+    }
+    else
+    {
+      return false;
+    }
+  }
+
+  getClientID(token: string): number{
+    let decodedToken: any = jwtDecode(token);
+    console.log(decodedToken);
+    if(decodedToken.cliente_id)
+    {
+      return decodedToken.cliente_id;
+    }
+    return -1;
   }
 
 

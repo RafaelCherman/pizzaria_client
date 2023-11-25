@@ -47,23 +47,19 @@ export class LoginComponent {
       next: user => { // QUANDO DÁ CERTO
         console.log(user);
         this.loginService.addToken(user.token);
+        if(this.loginService.hasPermission(user.token))
+        {
+          this.roteador.navigate(['admin']);
+        }
+        else{
         this.roteador.navigate(['user/menu']);
+      }
       },
       error: erro => { // QUANDO DÁ ERRO
         alert('Exemplo de tratamento de erro/exception! Observe o erro no console!');
         console.error(erro);
       }
     });
-
-
-
-
-    //implementar a requisição aqui e colocar o token no localstorage
-
-    if (this.login.login == 'admin' && this.login.senha == 'admin')
-      this.roteador.navigate(['admin']);
-    else
-      alert('login ou senha incorretos');
   }
 
   limpar(){
