@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { Cliente } from 'src/app/models/cliente';
 import { ClienteService } from 'src/app/services/cliente.service';
 
@@ -14,6 +14,7 @@ export class ClientecriarComponent {
 
 
   @Output() retorno = new EventEmitter<any>();
+  @Input() user: boolean = false;
   
   
   selecionado: boolean = true;

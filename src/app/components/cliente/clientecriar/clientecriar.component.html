@@ -1,5 +1,5 @@
 
-<div class="row">
+<div *ngIf="!user" class="row">
     <div class="offset-4 col-2"> 
         <p class="p-b" [ngClass]="{'selecionado' : (selecionado)}" (click)="escolher(true)">Escolher</p>
     </div>
@@ -8,7 +8,7 @@
     </div>
 </div>
 
-<div *ngIf="opcao" class="row d-flex justify-content-center">
+<div *ngIf="opcao && !user" class="row d-flex justify-content-center">
     <div class="col-5 form-group">
         <div *ngIf="erro" class="alert alert-danger" role="alert">
             {{ mensagem }}
@@ -18,7 +18,7 @@
     </div>
 </div>
 
-<div *ngIf="!opcao" class="row d-flex flex-column align-items-center">
+<div *ngIf="!opcao || user" class="row d-flex flex-column align-items-center">
     <div class="col-4 form-group">
         <label for="nome">Nome</label>
         <input [disabled]="selecionado" type="text" class="form-control" id="nome" [(ngModel)]="cliente.nome">
