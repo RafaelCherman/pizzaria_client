@@ -31,7 +31,6 @@ export class HttpRequestInterceptor implements HttpInterceptor{
       this.router.navigateByUrl(`/login`);
       return of(err.message);
     } else if (err.status === 403) {
-      alert('403 - tratar');
       return of(err.message);
     }
     return throwError(() => err);

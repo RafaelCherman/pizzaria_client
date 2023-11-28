@@ -17,7 +17,7 @@ export class GerenciasaborComponent {
   mensagem!: string;
   erro: boolean = false;
   sucesso: boolean = false;
-  lista = inject(ExibesaborComponent)
+  lista: Sabor[] = [];
   @Input() objetoEnviado: Sabor = new Sabor();
   @Input() opcaoBotao: string = "";
   service = inject(SaborService);
@@ -120,7 +120,7 @@ export class GerenciasaborComponent {
         this.erro = false;
         this.sucesso = true;
         this.modalService.dismissAll();
-        this.lista.listar()
+        this.listar()
       },
       error: erro => {
         console.log(erro);
@@ -138,7 +138,7 @@ export class GerenciasaborComponent {
         this.mensagem = "Registro editado com Sucesso";
         this.erro = false;
         this.sucesso = true;
-        this.lista.listar();
+        this.listar();
         this.modalService.dismissAll();
       },
       error: erro => {
@@ -166,7 +166,7 @@ export class GerenciasaborComponent {
         this.mensagem = "Registro excluído com Sucesso";
         this.erro = false;
         this.sucesso = true;
-        this.lista.listar();
+        this.listar();
         this.modalService.dismissAll();
       },
       error: erro => {
@@ -178,6 +178,20 @@ export class GerenciasaborComponent {
     })
    }
   }) 
+  }
+
+  listar() {
+    this.service.listAtivo().subscribe({
+      next: lista => {
+        
+        this.lista = lista;
+      },
+      error: erro => {
+        this.lista = [];
+        console.error(erro);
+      }
+    });
+
   }
 
 

@@ -96,7 +96,7 @@ export class GerenciaprodutoComponent {
   mensagem!: string;
   erro: boolean = false;
   sucesso: boolean = false;
-  lista = inject(ExibeprodutoComponent)
+  lista: Produtodiverso[] = [];
   @Input() objetoEnviado: Produtodiverso = new Produtodiverso();
   @Input() opcaoBotao: string = "";
   service = inject(ProdutodiversoService);
@@ -115,7 +115,7 @@ export class GerenciaprodutoComponent {
         this.erro = false;
         this.sucesso = true;
         this.modalService.dismissAll();
-        this.lista.listar()
+        this.listar()
       },
       error: erro => {
         console.log(erro);
@@ -133,7 +133,7 @@ export class GerenciaprodutoComponent {
         this.mensagem = "Registro editado com Sucesso";
         this.erro = false;
         this.sucesso = true;
-        this.lista.listar();
+        this.listar();
         this.modalService.dismissAll();
       },
       error: erro => {
@@ -158,7 +158,7 @@ export class GerenciaprodutoComponent {
         this.mensagem = "Registro excluído com Sucesso";
         this.erro = false;
         this.sucesso = true;
-        this.lista.listar();
+        this.listar();
         this.modalService.dismissAll();
       },
       error: erro => {
@@ -168,6 +168,20 @@ export class GerenciaprodutoComponent {
         this.sucesso = false;
       }
     })
+
+  }
+
+  listar() {
+    this.service.listAtivo().subscribe({
+      next: lista => {
+        
+        this.lista = lista;
+      },
+      error: erro => {
+        this.lista = [];
+        console.error(erro);
+      }
+    });
 
   }
 

@@ -1,6 +1,6 @@
 import {Component, inject, Input, OnInit} from '@angular/core';
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
-import {ExibefuncionarioComponent} from "../exibefuncionario/exibefuncionario.component";
+//import {ExibefuncionarioComponent} from "../exibefuncionario/exibefuncionario.component";
 import {Funcionario} from "../../../../models/funcionario";
 import {FuncionarioService} from "../../../../services/funcionario.service";
 
@@ -15,7 +15,7 @@ export class GerenciafuncionarioComponent implements OnInit{
   mensagem!: string;
   erro: boolean = false;
   sucesso: boolean = false;
-  lista = inject(ExibefuncionarioComponent);
+  lista: Funcionario[] = [];
   @Input() objetoEnviado: Funcionario = new Funcionario();
   @Input() opcaoBotao: string = "";
   service= inject(FuncionarioService);
@@ -34,7 +34,7 @@ export class GerenciafuncionarioComponent implements OnInit{
         this.erro = false;
         this.sucesso = true;
         this.modelService.dismissAll();
-        this.lista.listar()
+        this.listar()
       },
       error: erro => {
         console.log(erro);
@@ -56,7 +56,7 @@ export class GerenciafuncionarioComponent implements OnInit{
         this.erro = false;
         this.sucesso = true;
         this.modelService.dismissAll();
-        this.lista.listar()
+        this.listar()
       },
       error: erro => {
         console.log(erro);
@@ -75,7 +75,7 @@ export class GerenciafuncionarioComponent implements OnInit{
         this.erro = false;
         this.sucesso = true;
         this.modelService.dismissAll();
-        this.lista.listar();
+        this.listar();
       },
       error: erro => {
         console.log(erro);
@@ -90,5 +90,17 @@ export class GerenciafuncionarioComponent implements OnInit{
 
     this.modelService.dismissAll();
 
+  }
+
+  listar() {
+    this.service.listAtivo().subscribe({
+      next: lista => {
+        this.lista = lista;
+      },
+      error: erro => {
+        this.lista = [];
+        console.error(erro);
+      }
+    });
   }
 }

@@ -3,7 +3,6 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {Pizzatipo} from 'src/app/models/pizzatipo';
 import {PizzatipoService} from 'src/app/services/pizzatipo.service';
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
-import {TipopizzalistComponent} from "../exibetipo/tipopizzalist.component";
 
 @Component({
   selector: 'app-gerenciatipo',
@@ -17,7 +16,7 @@ export class GerenciatipoComponent implements OnInit {
   mensagem!: string;
   erro: boolean = false;
   sucesso: boolean = false;
-  lista = inject(TipopizzalistComponent)
+  lista: Pizzatipo[] = [];
   @Input() objetoEnviado: Pizzatipo = new Pizzatipo();
   @Input() opcaoBotao: string = "";
   tipoService = inject(PizzatipoService);
@@ -48,7 +47,7 @@ export class GerenciatipoComponent implements OnInit {
         this.erro = false;
         this.sucesso = true;
         this.modalService.dismissAll();
-        this.lista.listar()
+        this.listar()
       },
       error: erro => {
         console.log(erro);
@@ -66,7 +65,7 @@ export class GerenciatipoComponent implements OnInit {
         this.mensagem = "Registro editado com Sucesso";
         this.erro = false;
         this.sucesso = true;
-        this.lista.listar();
+        this.listar();
         this.modalService.dismissAll();
       },
       error: erro => {
@@ -91,7 +90,7 @@ export class GerenciatipoComponent implements OnInit {
         this.mensagem = "Registro excluído com Sucesso";
         this.erro = false;
         this.sucesso = true;
-        this.lista.listar();
+        this.listar();
         this.modalService.dismissAll();
       },
       error: erro => {
@@ -101,6 +100,20 @@ export class GerenciatipoComponent implements OnInit {
         this.sucesso = false;
       }
     })
+
+  }
+
+  listar() {
+    this.tipoService.listAll().subscribe({
+      next: lista => {
+
+        this.lista = lista;
+      },
+      error: erro => {
+        alert('Exemplo de tratamento de erro/exception! Observe o erro no console!');
+        console.error(erro);
+      }
+    });
 
   }
 }
