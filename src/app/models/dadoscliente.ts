@@ -5,4 +5,7 @@ export class Dadoscliente {
 
     login!: Usuario;
     cliente!: Cliente;
+
+
+    
 }
