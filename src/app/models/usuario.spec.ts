@@ -15,4 +15,7 @@ describe('Usuario', () => {
         expect(usuario.login).toBe('john_doe');
         expect(usuario.senha).toBe('password123');
     });
+
+
+
 });
