@@ -19,9 +19,7 @@ describe('MenupedidoComponent', () => {
     fixture.detectChanges();
   });
 
-  //TESTE COM ERRO
-  //InvalidTokenError: Invalid token specified: must be a string
-  it('should create', () => {
+   it('should create', () => {
     expect(component).toBeTruthy();
-  });
+   });
 });

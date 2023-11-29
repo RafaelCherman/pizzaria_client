@@ -22,4 +22,22 @@ describe('GerenciafuncionarioComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should render alerts, inputs, and buttons correctly', () => {
+    const compiled = fixture.nativeElement;
+    expect(compiled.querySelector('.alert.alert-danger')).toBeNull();
+    expect(compiled.querySelector('.alert.alert-success')).toBeNull();
+    expect(compiled.querySelector('input#nome')).toBeTruthy();
+    expect(compiled.querySelector('input#tamanho')).toBeTruthy();
+    const selectElement = compiled.querySelector('select.form-select');
+    expect(selectElement).toBeTruthy();
+    expect(selectElement.querySelectorAll('option').length).toBe(3);
+    expect(compiled.querySelector('input[value="Voltar"]')).toBeTruthy();
+    expect(compiled.querySelector('input[value="Editar"]')).toBeNull();
+    expect(compiled.querySelector('input[value="Cadastrar"]')).toBeTruthy();
+    expect(compiled.querySelector('input[value="Excluir"]')).toBeTruthy();
+  });
+
 });
+
+

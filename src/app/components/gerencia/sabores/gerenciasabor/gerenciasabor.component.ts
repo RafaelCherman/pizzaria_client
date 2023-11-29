@@ -1,5 +1,5 @@
 import { Component, Input, inject } from '@angular/core';
-import { Router } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Sabor } from 'src/app/models/sabor';
 import { SaborService } from 'src/app/services/sabor.service';
@@ -12,18 +12,16 @@ import { ExibesaborComponent } from '../exibesabor/exibesabor.component';
 })
 export class GerenciasaborComponent {
 
-  router = inject(Router);
+
   modalService = inject(NgbModal);
-  mensagem!: string;
-  erro: boolean = false;
-  sucesso: boolean = false;
+
   lista: Sabor[] = [];
   @Input() objetoEnviado: Sabor = new Sabor();
   @Input() opcaoBotao: string = "";
   service = inject(SaborService);
-  sabor: Sabor = new Sabor();
 
-/*
+
+
   roteador = inject(ActivatedRoute);
   router = inject(Router);
 
@@ -61,57 +59,52 @@ export class GerenciasaborComponent {
       }
     })
   }
-
-  cadastrar(){
-    this.saborService.save(this.sabor).subscribe({
-      next: sabor  =>
-      {
-        this.mensagem = "Registro cadastrado com Sucesso";
-        this.erro = false;
-        this.sucesso = true;
-      },
-      error: erro =>
-      {
-        console.log(erro);
-        this.mensagem = "Houve algum erro";
-        this.erro = true;
-        this.sucesso = false;
-      }
-    })
-  }
-
-  editar(){
-    this.saborService.edit(this.id, this.sabor).subscribe({
-      next: sabor  =>
-      {
-        this.mensagem = "Registro editado com Sucesso";
-        this.erro = false;
-        this.sucesso = true;
-      },
-      error: erro =>
-      {
-        console.log(erro);
-        this.mensagem = "Houve algum erro";
-        this.erro = true;
-        this.sucesso = false;
-      }
-    })
-  }
-
-  voltar()
-  {
-    this.router.navigate(['/sabores'])
-  }
-*/
-
-  
-
-  constructor() {  }
-
-  ngOnInit(): void {
-    this.sabor = this.objetoEnviado;
-    this.sabor = this.objetoEnviado;
- }
+ //
+ //  cadastrar(){
+ //    this.saborService.save(this.sabor).subscribe({
+ //      next: sabor  =>
+ //      {
+ //        this.mensagem = "Registro cadastrado com Sucesso";
+ //        this.erro = false;
+ //        this.sucesso = true;
+ //      },
+ //      error: erro =>
+ //      {
+ //        console.log(erro);
+ //        this.mensagem = "Houve algum erro";
+ //        this.erro = true;
+ //        this.sucesso = false;
+ //      }
+ //    })
+ //  }
+ //
+ //  editar(){
+ //    this.saborService.edit(this.id, this.sabor).subscribe({
+ //      next: sabor  =>
+ //      {
+ //        this.mensagem = "Registro editado com Sucesso";
+ //        this.erro = false;
+ //        this.sucesso = true;
+ //      },
+ //      error: erro =>
+ //      {
+ //        console.log(erro);
+ //        this.mensagem = "Houve algum erro";
+ //        this.erro = true;
+ //        this.sucesso = false;
+ //      }
+ //    })
+ //  }
+ //
+ //  voltar()
+ //  {
+ //    this.router.navigate(['/sabores'])
+ //  }
+ //
+ //  ngOnInit(): void {
+ //    this.sabor = this.objetoEnviado;
+ //    this.sabor = this.objetoEnviado;
+ // }
 
   cadastrar() {
     this.service.save(this.sabor).subscribe({
@@ -150,7 +143,7 @@ export class GerenciasaborComponent {
       }
     })
   }
-  
+
 
   voltar() {
 
@@ -177,13 +170,13 @@ export class GerenciasaborComponent {
       }
     })
    }
-  }) 
+  })
   }
 
   listar() {
     this.service.listAtivo().subscribe({
       next: lista => {
-        
+
         this.lista = lista;
       },
       error: erro => {

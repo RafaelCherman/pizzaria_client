@@ -19,7 +19,7 @@
       <td>{{valor.id}}</td>
       <td>{{valor.nome}}</td>
       <td>{{valor.tamanho}}</td>
-      <td>{{valor.valor}}</td>
+      <td>{{valor.valor | currency:'BRL':'symbol':'1.2-2'}}</td>
       <td>{{valor.qntSabores}}</td>
       <td>
         <button type="button" class="btn btn-primary accion" (click)="editar(content, valor)">Editar</button>

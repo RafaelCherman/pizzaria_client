@@ -22,5 +22,17 @@ describe('ClientecriarComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+
   });
-});
+
+  it('render buttons', () => {
+    const compiled = fixture.nativeElement;
+    expect(compiled.querySelector('button')).toBeNull();
+    expect(compiled.querySelector('input')).toBeTruthy();
+    expect(compiled.querySelector('label')).toBeTruthy();
+    expect(compiled.querySelector('div')).toBeTruthy();
+  });
+
+
+
+  });

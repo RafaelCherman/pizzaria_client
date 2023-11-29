@@ -35,6 +35,7 @@ import { ClientecriarComponent } from './components/cliente/clientecriar/cliente
 import { ExibefuncionarioComponent } from './components/gerencia/funcionario/exibefuncionario/exibefuncionario.component';
 import { GerenciafuncionarioComponent } from './components/gerencia/funcionario/gerenciafuncionario/gerenciafuncionario.component' ;
 import { httpInterceptorProviders } from './interceptors/httpinterceptor.service';
+import {NgxMaskDirective, NgxMaskPipe} from "ngx-mask";
 
 
 @NgModule({
@@ -76,7 +77,8 @@ import { httpInterceptorProviders } from './interceptors/httpinterceptor.service
     AppRoutingModule,
     NgbModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxMaskDirective, NgxMaskPipe,
   ],
   providers: [
     httpInterceptorProviders

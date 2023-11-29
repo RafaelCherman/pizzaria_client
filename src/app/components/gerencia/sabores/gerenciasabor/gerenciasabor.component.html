@@ -1,4 +1,4 @@
-<!--<div *ngIf="erro" class="alert alert-danger" role="alert">
+<div *ngIf="erro" class="alert alert-danger" role="alert">
     {{ mensagem }}
 </div>
 <div *ngIf="sucesso" class="alert alert-success" role="alert">
@@ -16,7 +16,7 @@
     </div>
     <div class="col-5 form-group">
         <label for="valor">Valor</label>
-        <input type="number" class="form-control" id="valor" [(ngModel)]="sabor.valor">
+        <input type="number" class="form-control" id="valor_sabor" [(ngModel)]="sabor.valor">
     </div>
 </div>
 
@@ -28,7 +28,7 @@
         <input *ngIf="edicao" class="btn btn-warning" value="Editar" (click)="editar()"/>
         <input *ngIf="!edicao" class="btn btn-success" value="Cadastrar" (click)="cadastrar()" />
     </div>
-</div>-->
+</div>
 
 <div *ngIf="erro" class="alert alert-danger" role="alert">
     {{ mensagem }}
@@ -40,7 +40,7 @@
 <div class="row d-flex justify-content-center">
     <div class="col-5 form-group">
         <label for="nome">Nome</label>
-        <input [disabled]="opcaoBotao=='Excluir'" type="text" class="form-control" id="nome" [(ngModel)]="sabor.nome">
+        <input [disabled]="opcaoBotao=='Excluir'" type="text" class="form-control" id="nome2" [(ngModel)]="sabor.nome">
     </div>
     <div class="col-5 form-group">
         <label for="tipo">Ingredientes</label>
