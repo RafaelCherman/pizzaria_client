@@ -51,7 +51,7 @@ export class LoginComponent {
         this.loginService.addToken(user.token);
         if(this.loginService.hasPermission(user.token))
         {
-          this.roteador.navigate(['admin']);
+          this.roteador.navigate(['admin/pedidos']);
         }
         else{
         this.roteador.navigate(['user/menu']);

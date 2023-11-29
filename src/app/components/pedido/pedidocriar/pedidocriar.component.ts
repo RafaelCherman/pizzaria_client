@@ -19,7 +19,7 @@ export class PedidocriarComponent {
   produtoList: Produtodiverso[] = [];
   pizzaList: Pizza[] = [];
   pedido: Pedido = new Pedido();
-  entrega: boolean = false;
+  entrega: boolean = true;
   data: Date = new Date();
 
   valorTotal: number = 0;
@@ -116,7 +116,7 @@ export class PedidocriarComponent {
       {
         this.pedidoService.save(this.pedido).subscribe({
           next: pedido =>{
-            this.retorno.emit(pedido);
+            this.voltar(pedido);
           },
           error: erro =>{
             alert('Exemplo de tratamento de erro/exception! Observe o erro no console!');
