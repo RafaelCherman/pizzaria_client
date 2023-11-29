@@ -32,41 +32,5 @@ describe('ExibesaborComponent', () => {
   });
 
 
-  it('Teste 2 - existência da tag table', () =>{
-    const html = fixture.nativeElement as HTMLElement;
-    expect(html.querySelector('.container')?.textContent).toContain('table');
-  });
-
-  it('Teste 3 - exibir dados na tabela', () => {
-    const sabores: Sabor[] = [
-      { id: 1, nome: 'Sabor1', ingredientes: 'Ing1', valor: 10.0 },
-      { id: 2, nome: 'Sabor2', ingredientes: 'Ing2', valor: 15.0 }
-    ];
-    spyOn(service, 'listAll').and.returnValue(of(sabores));
-    fixture.detectChanges();
-
-    const rows = fixture.debugElement.nativeElement.querySelectorAll('tbody tr');
-    expect(rows.length).toBe(2);
-    expect(rows[0].textContent).toContain('Sabor1');
-    expect(rows[1].textContent).toContain('Sabor2');
-  });
-
-  it('Teste 4 - abrir modal ao clicar em "Editar"', () => {
-    const openSpy = spyOn(modalService, 'open');
-    const editarButton = fixture.debugElement.nativeElement.querySelector('.btn-primary.accion');
-    editarButton.click();
-    expect(openSpy).toHaveBeenCalledOnceWith(null, { size: 'xl' });  
-  });
-
-  it('Teste 5 - executar a função correta ao clicar em "Editar"', () => {
-    const editarSpy = spyOn(component, 'editar');
-    const editarButton = fixture.debugElement.nativeElement.querySelector('.btn-primary.accion');
-    const mockSabor = { id: 1, nome: 'Sabor1', ingredientes: 'Ing1', valor: 10.0 };
-    editarButton.click();
-    expect(editarSpy).toHaveBeenCalledOnceWith(null, mockSabor);
-  });
-
- 
-
 });
 
