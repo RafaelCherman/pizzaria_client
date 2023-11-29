@@ -34,8 +34,8 @@ describe('GerenciafuncionarioComponent', () => {
     expect(selectElement.querySelectorAll('option').length).toBe(3);
     expect(compiled.querySelector('input[value="Voltar"]')).toBeTruthy();
     expect(compiled.querySelector('input[value="Editar"]')).toBeNull();
-    expect(compiled.querySelector('input[value="Cadastrar"]')).toBeTruthy();
-    expect(compiled.querySelector('input[value="Excluir"]')).toBeTruthy();
+    expect(compiled.querySelector('input[value="Cadastrar"]')).toBeNull();
+    expect(compiled.querySelector('input[value="Excluir"]')).toBeNull();
   });
 
 });

@@ -10,7 +10,7 @@ import { PedidoService } from 'src/app/services/pedido.service';
 })
 export class GerenciapedidoComponent {
 
-  pedidoService = inject(PedidoService);  
+  pedidoService = inject(PedidoService);
   pedido: Pedido = new Pedido();
 
   roteador = inject(ActivatedRoute);
@@ -79,5 +79,9 @@ export class GerenciapedidoComponent {
 
   voltar(){
     this.router.navigate(["admin/pedidos"]);
+  }
+
+  ngOnInit() {
+
   }
 }
