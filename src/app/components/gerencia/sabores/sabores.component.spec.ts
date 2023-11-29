@@ -22,4 +22,25 @@ describe('SaboresComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should contain a "Cadastrar Novo" button', () => {
+    const buttonElement = fixture.nativeElement.querySelector('input.btn-success');
+    expect(buttonElement).toBeTruthy();
+    expect(buttonElement.value).toContain('Cadastrar Novo');
+  });
+
+  it('should contain the "app-exibesabor" component', () => {
+    const exibesaborComponent = fixture.nativeElement.querySelector('app-exibesabor');
+    expect(exibesaborComponent).toBeTruthy();
+  });
+
+  it('should pass sabores and gerencia to "app-exibesabor"', () => {
+    const appExibesabor = fixture.nativeElement.querySelector('app-exibesabor');
+    expect(appExibesabor).toBeTruthy();
+    expect(appExibesabor.sabores).toEqual(component.sabores);
+    expect(appExibesabor.gerencia).toEqual(true);
+  });
+
+
+
 });
