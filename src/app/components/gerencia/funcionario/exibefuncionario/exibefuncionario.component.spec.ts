@@ -46,20 +46,6 @@ describe('ExibefuncionarioComponent', () => {
     fixture.detectChanges();
 
     const tableRows: NodeListOf<HTMLTableRowElement> = fixture.nativeElement.querySelectorAll('tbody tr');
-    <div class="card">
-    <button type="button" class="btn btn-primary success" >Gerenciar Pedidos</button>
-
-    <div class="organiza_itens">
-
-    <button type="button" class="btn btn-primary" >Sabores</button>
-      <button type="button" class="btn btn-primary" >Outros Produtos</button>
-    <button type="button" class="btn btn-primary"
-    routerLink="/admin/tipoDePizza"
-
-      >Tipos de pizza</button>
-    <button type="button" class="btn btn-primary" >Funcionários</button>
-      </div>
-
     expect(tableRows.length).toBe(component.lista.length);
 
     tableRows.forEach((row, index) => {
