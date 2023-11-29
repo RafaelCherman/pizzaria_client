@@ -32,7 +32,9 @@ describe('GerenciapedidoComponent', () => {
     fixture.detectChanges();
   });
 
+  //TESTE COM ERRO
+  //TypeError: this.roteador.snapshot.paramMap.get is not a function
   it('should create', () => {
     expect(component).toBeTruthy();
-  });
+  }); 
 });

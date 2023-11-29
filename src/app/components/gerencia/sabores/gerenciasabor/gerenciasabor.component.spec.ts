@@ -42,13 +42,13 @@ describe('GerenciasaborComponent', () => {
 
 
   it('Teste de 1 @Input - Interpolação no template', () => {
-    let elemento = fixture.debugElement.query(By.css('input[name="exampleInputText1"]'));
+    let elemento = fixture.debugElement.query(By.css('input[id="nome"]'));
     expect(elemento.nativeElement.ngModel).toEqual('Catupiry');
   });
 
 
   it('Teste 2 de @Input - Interpolação no template', () => {
-    let elemento = fixture.debugElement.query(By.css('input[name="exampleInputText1"]'));
+    let elemento = fixture.debugElement.query(By.css('input[id="nome"]'));
     expect(elemento.nativeElement.ngModel).not.toBe(null);
   });
 
