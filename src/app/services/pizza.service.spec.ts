@@ -2,6 +2,8 @@ import { TestBed } from '@angular/core/testing';
 import { PizzaService } from './pizza.service';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 import {Pizza} from "../models/pizza";
+import {Pizzatipo} from "../models/pizzatipo";
+import {Resposta} from "../models/resposta";
 
 describe('PizzaService', () => {
   let pizzaService: PizzaService;
@@ -78,6 +80,50 @@ describe('PizzaService', () => {
     const calculatedPizza = pizzaService.calculaValorPizza(mockPizza);
 
     expect(calculatedPizza).toEqual(15); // 10 (tipo) + 5 (sabor)
+  });
+
+  it('should save a sabor', () => {
+    const mockPizzatipo: Pizza = {
+      id: 1,
+      tipo: {id: 1, nome: 'Test Pizza Tipo' ,qntSabores: 1, tamanho: 'grande', valor: 10.0 },
+      sabor: [{ id: 1, nome: 'Test Sabor 1', valor: 5, ingredientes:'ingradientes', }],
+      valorPizza: 0  };
+
+    pizzaService.save(mockPizzatipo).subscribe(response => {
+      expect(response).toEqual(mockPizzatipo);
+    });
+
+    const req = httpTestingController.expectOne('http://localhost:8080/api/pizza');
+    expect(req.request.method).toBe('POST');
+    req.flush(mockPizzatipo);
+  });
+
+  it('should edit a sabor', () => {
+    const id = 1;
+    const mockPizzatipo: Pizza = { id: 1,
+      tipo: {id: 1, nome: 'Test Pizza Tipo' ,qntSabores: 1, tamanho: 'grande', valor: 10.0 },
+      sabor: [{ id: 1, nome: 'Test Sabor 1', valor: 5, ingredientes:'ingradientes', }],
+      valorPizza: 0  };
+    pizzaService.edit(id,mockPizzatipo ).subscribe(response => {
+      expect(response).toEqual(mockPizzatipo);
+    });
+    const req = httpTestingController.expectOne(`http://localhost:8080/api/pizza?id=${id}`);
+    expect(req.request.method).toBe('PUT');
+    req.flush(mockPizzatipo);
+  });
+
+  it('should delete a pizza', () => {
+    const id = 1;
+    const resposta: Resposta = new Resposta();
+    resposta.mensagem = "Sabor deletado com sucesso!";
+
+    pizzaService.delete(id).subscribe(response => {
+      expect(response).toEqual(resposta);
+    });
+
+    const req = httpTestingController.expectOne(`http://localhost:8080/api/pizza?id=${id}`);
+    expect(req.request.method).toBe('DELETE');
+    req.flush(resposta);
   });
 
 });

@@ -4,6 +4,8 @@ import { EnderecoService } from './endereco.service';
 import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 import {Endereco} from "../models/endereco";
+import {Pizza} from "../models/pizza";
+import {Resposta} from "../models/resposta";
 
 describe('EnderecoService', () => {
   let enderecoService: EnderecoService;
@@ -74,4 +76,56 @@ describe('EnderecoService', () => {
     req.flush(mockEnderecos);
   });
 
+  it('should save a sabor', () => {
+    const mockPizzatipo: Endereco = { id:1,
+      telResidencia: '123456',
+      rua: 'rua',
+      nuEndereco: 123,
+      bairro: 'bairro',
+      complemento: 'complemento',
+      cep: 'cep',
+      cliente: { id: 1, nome: 'Test Cliente', cpf: '12345678901', telCelular: '12345678901'}
+    };
+
+    enderecoService.save(mockPizzatipo).subscribe(response => {
+      expect(response).toEqual(mockPizzatipo);
+    });
+
+    const req = httpTestingController.expectOne('http://localhost:8080/api/endereco');
+    expect(req.request.method).toBe('POST');
+    req.flush(mockPizzatipo);
+  });
+
+  it('should edit a sabor', () => {
+    const id = 1;
+    const mockPizzatipo: Endereco = { id:1,
+      telResidencia: '123456',
+      rua: 'rua',
+      nuEndereco: 123,
+      bairro: 'bairro',
+      complemento: 'complemento',
+      cep: 'cep',
+      cliente: { id: 1, nome: 'Test Cliente', cpf: '12345678901', telCelular: '12345678901'}
+    };
+    enderecoService.edit(id,mockPizzatipo ).subscribe(response => {
+      expect(response).toEqual(mockPizzatipo);
+    });
+    const req = httpTestingController.expectOne(`http://localhost:8080/api/endereco?id=${id}`);
+    expect(req.request.method).toBe('PUT');
+    req.flush(mockPizzatipo);
+  });
+
+  it('should delete a pizza', () => {
+    const id = 1;
+    const resposta: Resposta = new Resposta();
+    resposta.mensagem = "Sabor deletado com sucesso!";
+
+    enderecoService.delete(id).subscribe(response => {
+      expect(response).toEqual(resposta);
+    });
+
+    const req = httpTestingController.expectOne(`http://localhost:8080/api/endereco?id=${id}`);
+    expect(req.request.method).toBe('DELETE');
+    req.flush(resposta);
+  });
 });

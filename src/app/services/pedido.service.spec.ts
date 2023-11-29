@@ -4,6 +4,8 @@ import { PedidoService } from './pedido.service';
 import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 import {Pedido} from "../models/pedido";
+import {Endereco} from "../models/endereco";
+import {Resposta} from "../models/resposta";
 
 describe('PedidoService', () => {
   let pedidoService: PedidoService;
@@ -159,5 +161,78 @@ describe('PedidoService', () => {
     const req = httpTestingController.expectOne(`${pedidoService.API}/situacao?s=${situacao}`);
     expect(req.request.method).toEqual('GET');
     req.flush(mockPedidos);
+  });
+
+  it('should save a sabor', () => {
+    const mockPizzatipo: Pedido = {
+      id: 1,
+      cliente: { id: 1, nome: 'Test Cliente', cpf: '12345678901', telCelular: '12345678901' },
+      atendente: { id: 1, nome: 'Test Atendente', cpf: '12345678901', funcao: 'Atendente' },
+      entregador: { id: 1, nome: 'Test Atendente', cpf: '12345678901', funcao: 'Atendente' },
+      solicitaEntrega: true,
+      situacaoPedido: 'solicitado',
+      valorTotal: 10.0,
+      endereco: {id:1, telResidencia: '123456', rua: 'rua', nuEndereco: 123, bairro: 'bairro', complemento: 'complemento', cep: 'cep',
+        cliente: { id: 1, nome: 'Test Cliente', cpf: '12345678901', telCelular: '12345678901'}},
+      formaPagamento: 'dinheiro',
+      dataPedido: '2021-06-01',
+      pizzas: [{ id: 1,
+        tipo: { id: 1, nome: 'Test Pizza Tipo' ,qntSabores: 1, tamanho: 'grande', valor: 10.0 },
+        sabor: [{ id: 1, nome: 'Test Sabor 1', valor: 5, ingredientes:'ingradientes'}],
+        valorPizza: 15
+      } ],
+      produtos: [{ id: 1, nome: 'Test Produto', tipo: 'Test Tipo', preco: 10.0 }],
+    };
+
+    pedidoService.save(mockPizzatipo).subscribe(response => {
+      expect(response).toEqual(mockPizzatipo);
+    });
+
+    const req = httpTestingController.expectOne('http://localhost:8080/api/pedido');
+    expect(req.request.method).toBe('POST');
+    req.flush(mockPizzatipo);
+  });
+
+  it('should edit a sabor', () => {
+    const id = 1;
+    const mockPizzatipo: Pedido = {
+      id: 1,
+      cliente: { id: 1, nome: 'Test Cliente', cpf: '12345678901', telCelular: '12345678901' },
+      atendente: { id: 1, nome: 'Test Atendente', cpf: '12345678901', funcao: 'Atendente' },
+      entregador: { id: 1, nome: 'Test Atendente', cpf: '12345678901', funcao: 'Atendente' },
+      solicitaEntrega: true,
+      situacaoPedido: 'solicitado',
+      valorTotal: 10.0,
+      endereco: {id:1, telResidencia: '123456', rua: 'rua', nuEndereco: 123, bairro: 'bairro', complemento: 'complemento', cep: 'cep',
+        cliente: { id: 1, nome: 'Test Cliente', cpf: '12345678901', telCelular: '12345678901'}},
+      formaPagamento: 'dinheiro',
+      dataPedido: '2021-06-01',
+      pizzas: [{ id: 1,
+        tipo: { id: 1, nome: 'Test Pizza Tipo' ,qntSabores: 1, tamanho: 'grande', valor: 10.0 },
+        sabor: [{ id: 1, nome: 'Test Sabor 1', valor: 5, ingredientes:'ingradientes'}],
+        valorPizza: 15
+      } ],
+      produtos: [{ id: 1, nome: 'Test Produto', tipo: 'Test Tipo', preco: 10.0 }],
+    };
+    pedidoService.edit(id,mockPizzatipo ).subscribe(response => {
+      expect(response).toEqual(mockPizzatipo);
+    });
+    const req = httpTestingController.expectOne(`http://localhost:8080/api/pedido?id=${id}`);
+    expect(req.request.method).toBe('PUT');
+    req.flush(mockPizzatipo);
+  });
+
+  it('should delete a pizza', () => {
+    const id = 1;
+    const resposta: Resposta = new Resposta();
+    resposta.mensagem = "Sabor deletado com sucesso!";
+
+    pedidoService.delete(id).subscribe(response => {
+      expect(response).toEqual(resposta);
+    });
+
+    const req = httpTestingController.expectOne(`http://localhost:8080/api/pedido?id=${id}`);
+    expect(req.request.method).toBe('DELETE');
+    req.flush(resposta);
   });
 });

@@ -4,6 +4,8 @@ import { FuncionarioService } from './funcionario.service';
 import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 import {Funcionario} from "../models/funcionario";
+import {Pizza} from "../models/pizza";
+import {Resposta} from "../models/resposta";
 
 describe('FuncionarioService', () => {
   let funcionarioService: FuncionarioService;
@@ -57,5 +59,30 @@ describe('FuncionarioService', () => {
     expect(req.request.method).toEqual('GET');
     req.flush(mockFuncionarios);
   });
+
+  it('should save a sabor', () => {
+    const mockPizzatipo: Funcionario =  {id: 1, nome: 'Test Atendente', cpf: '12345678901', funcao: 'Atendente'};
+
+    funcionarioService.save(mockPizzatipo).subscribe(response => {
+      expect(response).toEqual(mockPizzatipo);
+    });
+
+    const req = httpTestingController.expectOne('http://localhost:8080/api/funcionario');
+    expect(req.request.method).toBe('POST');
+    req.flush(mockPizzatipo);
+  });
+
+  it('should edit a sabor', () => {
+    const id = 1;
+    const mockPizzatipo: Funcionario =  {id: 1, nome: 'Test Atendente', cpf: '12345678901', funcao: 'Atendente'};
+    funcionarioService.edit(id,mockPizzatipo ).subscribe(response => {
+      expect(response).toEqual(mockPizzatipo);
+    });
+    const req = httpTestingController.expectOne(`http://localhost:8080/api/funcionario?id=${id}`);
+    expect(req.request.method).toBe('PUT');
+    req.flush(mockPizzatipo);
+  });
+
+
 
 });
