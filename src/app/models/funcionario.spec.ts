@@ -1,4 +1,4 @@
-/*import { Funcionario } from './funcionario';
+import { Funcionario } from './funcionario';
 
 describe('Funcionario', () => {
   it('should create an instance of Funcionario', () => {
@@ -22,4 +22,3 @@ describe('Funcionario', () => {
     expect(funcionario.funcao).toEqual('Cargo');
   });
 });
-*/
