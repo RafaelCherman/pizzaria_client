@@ -17,6 +17,7 @@ import {GerenciaprodutoComponent} from "./components/gerencia/produtos/gerenciap
 import { ExibesaborComponent } from './components/gerencia/sabores/exibesabor/exibesabor.component';
 import { ExibeprodutoComponent } from './components/gerencia/produtos/exibeproduto/exibeproduto.component';
 import { rotaguardGuard } from './guards/rotaguard.guard';
+import { ExibefuncionarioComponent } from './components/gerencia/funcionario/exibefuncionario/exibefuncionario.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "login", pathMatch: 'full'},
@@ -28,6 +29,7 @@ const routes: Routes = [
       {path: "sabores", component: ExibesaborComponent},
       {path: "produtos", component: ExibeprodutoComponent},
       {path: "pedidos", component: PedidosComponent},
+      {path: "funcionarios", component: ExibefuncionarioComponent},
       {path: "pedidos/editar/:id", component: GerenciapedidoComponent},
       
     ]},
