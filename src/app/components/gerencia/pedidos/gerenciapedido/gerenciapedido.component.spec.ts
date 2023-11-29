@@ -22,6 +22,7 @@
 //
 //     await TestBed.configureTestingModule({
 //       declarations: [GerenciapedidoComponent],
+//       schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
 //       imports: [HttpClientTestingModule],
 //       providers: [
 //         { provide: ActivatedRoute, useValue: mockActivatedRoute }
@@ -40,15 +41,9 @@
 //     expect(component).toBeTruthy();
 //   });
 //
-//   it('should set id from ActivatedRoute', () => {
-//     expect(component.id).toEqual('1');
-//   });
 //
-//   it('should call findById if id is not null', () => {
-//     spyOn(component, 'findById');
-//     component.ngOnInit();
-//     expect(component.findById).toHaveBeenCalled();
-//   });
+//
+//
 // });
 //
 //
