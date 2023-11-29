@@ -4,7 +4,6 @@ import { Usuario } from '../models/usuario';
 import { Observable } from 'rxjs';
 import { User } from '../models/user';
 import { jwtDecode } from 'jwt-decode';
-import { Cliente } from '../models/cliente';
 import { Dadoscliente } from '../models/dadoscliente';
 
 @Injectable({

@@ -17,7 +17,7 @@ export class PizzaService {
   findById(id: number): Observable<Pizza>{
     let params = new HttpParams()
       .set('id', id)
-    
+
     return this.http.get<Pizza>(this.API, {params: params});
   }
 
@@ -45,11 +45,9 @@ export class PizzaService {
   delete(id: number): Observable<Resposta>{
     let params = new HttpParams()
       .set('id', id)
-    
+
     return this.http.delete<Resposta>(this.API, {params: params});
   }
-
-
 
   calculaValorPizza(pizza: Pizza): number{
     let total: number = 0;

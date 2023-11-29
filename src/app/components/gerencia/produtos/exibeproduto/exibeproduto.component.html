@@ -1,44 +1,8 @@
-<!--<div>
-    <table class="table table-bordered">
-        <thead>
-            <tr class="row">
-                <th class="col-2">
-                    Nome
-                </th>
-                <th class="col-4">
-                    Tipo
-                </th>
-                <th class="col-2">
-                    Valor
-                </th>
-                <th class="col-4" *ngIf="gerencia">
-                    Opções
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let produto of produtos" class="row">
-                <td class="col-2">
-                    {{produto.nome}}
-                </td>
-                <td class="col-4">
-                    {{produto.tipo}}
-                </td>
-                <td class="col-2">
-                    {{produto.preco}}
-                </td>
-                <td class="col-4" *ngIf="gerencia">
-                    <input type="button" class="btn btn-warning" value="Gerenciar" (click)="gerenciar(produto.id)" />
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>-->
 
 <section class="organiza_itens">
 
     <table class="table table-hover">
-    
+
     <thead>
     <button type="button" class="btn btn-primary success" (click)="cadastrar(content)">Cadastrar novo</button>
         <tr>
@@ -63,8 +27,8 @@
       </tbody>
     </table>
     </section>
-    
-    
+
+
     <ng-template #content let-modal>
       <div class="modal-header">
         <h4 class="modal-title" *ngIf="opcaoBotao =='Editar'">Editar</h4>
@@ -73,8 +37,7 @@
         <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
       </div>
       <div class="modal-body">
-    <app-gerenciaproduto [objetoEnviado]="objeto" [opcaoBotao]="opcaoBotao" ></app-gerenciaproduto>
+    <app-gerenciaproduto (retorno)="listar()" [objetoEnviado]="objeto" [opcaoBotao]="opcaoBotao" ></app-gerenciaproduto>
       </div>
-    
+
     </ng-template>
-    

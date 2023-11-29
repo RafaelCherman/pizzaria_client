@@ -1,4 +1,4 @@
-import {Component, inject, Input} from '@angular/core';
+import {Component, EventEmitter, inject, Input, Output} from '@angular/core';
 import {Funcionario} from "../../../../models/funcionario";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {FuncionarioService} from "../../../../services/funcionario.service";
@@ -44,6 +44,7 @@ export class ExibefuncionarioComponent {
     this.opcaoBotao = "Excluir";
     this.objeto = Object.assign({}, objeto);
     this.modalService.open(content, {size: 'xl'});
+    this.listar();
   }
 
   cadastrar(content: any) {
@@ -51,6 +52,7 @@ export class ExibefuncionarioComponent {
 
     this.opcaoBotao = "Cadastrar";
     this.modalService.open(content, {size: 'xl'})
+    this.listar();
   }
 
 }

@@ -1,4 +1,4 @@
-import {Component, inject, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, inject, Input, OnInit, Output} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Pizzatipo} from 'src/app/models/pizzatipo';
 import {PizzatipoService} from 'src/app/services/pizzatipo.service';
@@ -19,6 +19,7 @@ export class GerenciatipoComponent implements OnInit {
   lista: Pizzatipo[] = [];
   @Input() objetoEnviado: Pizzatipo = new Pizzatipo();
   @Input() opcaoBotao: string = "";
+  @Output() retorno = new EventEmitter<any>();
   tipoService = inject(PizzatipoService);
   tipo: Pizzatipo = new Pizzatipo();
 
@@ -46,6 +47,8 @@ export class GerenciatipoComponent implements OnInit {
         this.mensagem = "Registro cadastrado com Sucesso";
         this.erro = false;
         this.sucesso = true;
+        this.listar();
+        this.retorno.emit();
         this.modalService.dismissAll();
         this.listar()
       },
@@ -65,7 +68,7 @@ export class GerenciatipoComponent implements OnInit {
         this.mensagem = "Registro editado com Sucesso";
         this.erro = false;
         this.sucesso = true;
-        this.listar();
+        this.retorno.emit();
         this.modalService.dismissAll();
       },
       error: erro => {
@@ -90,7 +93,7 @@ export class GerenciatipoComponent implements OnInit {
         this.mensagem = "Registro excluído com Sucesso";
         this.erro = false;
         this.sucesso = true;
-        this.listar();
+        this.retorno.emit();
         this.modalService.dismissAll();
       },
       error: erro => {

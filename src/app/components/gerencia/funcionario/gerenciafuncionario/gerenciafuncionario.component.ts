@@ -1,4 +1,4 @@
-import {Component, inject, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, inject, Input, OnInit, Output} from '@angular/core';
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 //import {ExibefuncionarioComponent} from "../exibefuncionario/exibefuncionario.component";
 import {Funcionario} from "../../../../models/funcionario";
@@ -18,6 +18,8 @@ export class GerenciafuncionarioComponent implements OnInit{
   lista: Funcionario[] = [];
   @Input() objetoEnviado: Funcionario = new Funcionario();
   @Input() opcaoBotao: string = "";
+  @Output() retorno = new EventEmitter<any>();
+
   service= inject(FuncionarioService);
   tipo: Funcionario = new Funcionario();
 
@@ -34,7 +36,7 @@ export class GerenciafuncionarioComponent implements OnInit{
         this.erro = false;
         this.sucesso = true;
         this.modelService.dismissAll();
-        this.listar()
+        this.retorno.emit();
       },
       error: erro => {
         console.log(erro);
@@ -56,7 +58,7 @@ export class GerenciafuncionarioComponent implements OnInit{
         this.erro = false;
         this.sucesso = true;
         this.modelService.dismissAll();
-        this.listar()
+        this.retorno.emit();
       },
       error: erro => {
         console.log(erro);
@@ -75,7 +77,7 @@ export class GerenciafuncionarioComponent implements OnInit{
         this.erro = false;
         this.sucesso = true;
         this.modelService.dismissAll();
-        this.listar();
+        this.retorno.emit();
       },
       error: erro => {
         console.log(erro);

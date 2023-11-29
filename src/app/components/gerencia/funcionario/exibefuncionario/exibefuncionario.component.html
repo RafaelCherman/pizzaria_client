@@ -35,7 +35,7 @@
     <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
   </div>
   <div class="modal-body">
-    <app-gerenciafuncionario [objetoEnviado]="objeto" [opcaoBotao]="opcaoBotao" ></app-gerenciafuncionario>
+    <app-gerenciafuncionario (retorno)="listar()" [objetoEnviado]="objeto" [opcaoBotao]="opcaoBotao" ></app-gerenciafuncionario>
   </div>
 
 </ng-template>
